@@ -9,7 +9,7 @@
     <meta name="description" content="hidratec-admin">
     <meta name="author" content="Sistema Hidratec ">
 
-    <title>Administración Sistema Hidratec</title>
+    <title>Administración Sistema Comercial Ceballos</title>
 
     <!-- Custom fonts for this template-->
     <link href="<?php echo base_url(); ?>assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
