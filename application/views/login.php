@@ -45,7 +45,7 @@
         <div class="row justify-content-center my-auto">
             <div class="col-md-8 col-10">
                 <div class="row justify-content-center"> <img id="logo" src="<?php echo base_url(); ?>assets/img/logos/eggs.jpg"> </div>
-                <h6 class="msg-info text-center">Ingrese sus credenciales de acceso </h6>
+                <h6 class="msg-info text-center">Comercial Ceballos </h6>
                 <form>
                   <div id="frm_email" class="form-floating mb-3"> 
                     <label id="label_user" class="form-control-label text-muted">Usuario</label> 

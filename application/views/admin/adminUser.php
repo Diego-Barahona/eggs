@@ -2,7 +2,7 @@
   <div class="container-fluid mb-5">
 
     <ol class="breadcrumb">
-      <li class="breadcrumb-item active">Usuarios / Empresa</li>
+      <li class="breadcrumb-item active">Usuarios Comercial Ceballos de la Carrera LTDA.</li>
     </ol>
 
     <div class="accordion" id="accordionExample">
@@ -26,7 +26,7 @@
     <div class="card mb-3">
       <div class="card-header">
         <i class="fas fa-table"></i>
-        Lista de usuarios Hidratec
+        Lista de usuarios 
         <button class="btn btn-success float-right" type='button' data-toggle="modal" id="btn" data-target="#modal_user"><i class="fas fa-plus"></i> Crear usuario</button>
       </div>
       <div class="card-body">
