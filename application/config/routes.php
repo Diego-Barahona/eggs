@@ -68,3 +68,11 @@ $route['api/get_users']['GET']= 'User/list';
 $route['api/create_user']['POST']= 'User/create';
 $route['api/update_user']['POST']= 'User/update';
 $route['api/des_hab_user']['POST']= 'User/des_hab';
+
+/*Admin User*/
+/*api admin user*/
+$route['cliente']['GET']= 'Cliente/index';
+$route['api/get_clientes']['GET']= 'Cliente/list';
+$route['api/create_clientes']['POST']= 'Cliente/create';
+$route['api/update_clientes']['POST']= 'Cliente/update';
+$route['api/des_hab_clientes']['POST']= 'Cliente/des_hab';
