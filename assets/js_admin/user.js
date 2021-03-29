@@ -90,8 +90,10 @@ get_users = () => {
                     $(option).html(u.description); 
                     $(option).appendTo("#range");
                     roles.push(u.description);
+                    
                 });
             }
+            
 			tabla.clear();
 			tabla.rows.add(data);
 			tabla.draw();
