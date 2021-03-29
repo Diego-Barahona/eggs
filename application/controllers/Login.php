@@ -17,7 +17,7 @@ class Login extends CI_Controller
 
             /* Datos de formulario*/
             $data = $this->input->post('data');
-            $email = $data['email'];
+            $rut = $data['rut'];
             $pass = $data['passwd'];
 
              /* Cargar datos para la validación de formulario*/
@@ -29,14 +29,14 @@ class Login extends CI_Controller
             /*Validación de formulario
             Si el formulario no es valido*/
             if($this->form_validation->run() == FALSE){
-                if(form_error('email')) $msg['email'] = form_error('email');
+                if(form_error('rut')) $msg['rut'] = form_error('rut');
                 if(form_error('passwd')) $msg['passwd'] = form_error('passwd');
                 $this->response->sendJSONResponse($msg);
                 $this->output->set_status_header(400);  /*Algunos o todos los campos estan vacios */ 
             }else{ 
             /*Si el formulario es valido*/
                 //Verificar si el usuario existe
-                if ($user_data = $this->LoginModel->checkUser($email)) {
+                if ($user_data = $this->LoginModel->checkUser($rut)) {
                     //Verificar que el usuario se encuentra habilitado
                     if ($user_data->state !=1) {
                         $msg['msg']="Usuario no tiene permisos para acceder al sistema.";

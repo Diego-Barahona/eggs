@@ -60,7 +60,7 @@
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center pb-4" href="">
 
-            <img src="<?php echo base_url(); ?>assets/img/" style="height:60px ;width:60px" >
+            <img src="<?php echo base_url(); ?>assets/img/logos/side.png" style="height:100px ;width:200px" >
 
             </a>
            
@@ -105,7 +105,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Gestión Productos</h6>
                         <a class="collapse-item" href=""><i class="fas fa-egg fa-fw"></i> Huevos</a>
-                        <a class="collapse-item" href=""><i class="fas fa-smoking fa-fw"></i> Cigarrillos</a>  
+                        <a class="collapse-item" href="<?php echo base_url(); ?>adminCigar"><i class="fas fa-smoking fa-fw"></i> Cigarrillos</a>  
                     </div>
                 </div>
                 <hr class="sidebar-divider">
@@ -150,7 +150,10 @@
                     <span>Gráficos</span></a>
                     <hr class="sidebar-divider">
             </li>
-
+            <!-- Sidebar Toggler (Sidebar) -->
+            <div class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+            </div>
 
         </ul>
         <!-- End of Sidebar -->
