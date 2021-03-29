@@ -8,9 +8,9 @@ class LoginModel extends CI_Model
         parent::__construct();
     }
 
-    public function checkUser($email)
+    public function checkUser($rut)
     {
-        $query = $this->db->get_where('user', array('email' => $email), 1)->row();
+        $query = $this->db->get_where('user', array('rut' => $rut), 1)->row();
         if (!$query) {return false;} else{return $query;}  
     }
 

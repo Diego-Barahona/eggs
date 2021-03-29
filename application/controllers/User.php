@@ -5,7 +5,7 @@ class User extends CI_Controller {
 
 	public function __construct(){
 		parent:: __construct(); 
-		$this->load->model('User_model');
+		$this->load->model('UserModel');
 		$this->load->helper('user_rules');
 	}
 	
@@ -24,8 +24,8 @@ class User extends CI_Controller {
 	//Funcion para listar usuario
 	public function list()
 	{
-		$users = $this->User_model->get_users();
-		$roles = $this->User_model->get_roles();
+		$users = $this->UserModel->get_users();
+		$roles = $this->UserModel->get_roles();
         $this->response->sendJSONResponse(array($users, $roles));
 	}
 
@@ -54,7 +54,7 @@ class User extends CI_Controller {
 		}else{
 		/*Si el formulario es valido*/
 			/*Crear usuario*/
-			if($id = $this->User_model->create($data)){
+			if($id = $this->UserModel->create($data)){
 				/*Actualizar registro en la tabla roles */
 				$msg['msg'] = "Usuario registrado con éxito.";
 				$this->response->sendJSONResponse($msg);
@@ -93,7 +93,7 @@ class User extends CI_Controller {
 			$this->output->set_status_header(400); 
 		}else{
 		/*Si el formulario es valido*/
-			if($id = $this->User_model->update($data)){
+			if($id = $this->UserModel->update($data)){
 				/*Actualizar registro en la tabla roles */
 				$msg['msg'] = "Usuario actualizado con éxito.";
 				$this->response->sendJSONResponse($msg);
@@ -121,7 +121,7 @@ class User extends CI_Controller {
 			if($state == 0) {$hab_des ="Deshabilitada";} else{$hab_des ="Habilitada"; } 
 
 			/*actualizar state de la empresa*/ 
-			if($this->User_model->des_hab($data)){
+			if($this->UserModel->des_hab($data)){
 				$msg['msg'] = "El usuario ha sido ".$hab_des." con éxito";
 				$this->response->sendJSONResponse($msg);
 			}else{

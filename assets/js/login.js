@@ -8,6 +8,10 @@ $(document).on({
 });
 
 $(() => {
+	$("#rut").rut({
+		minimumLength: 8,
+		validateOn: "change",
+	});
 	let msg = $('#msg').val();
 	if(msg){
 		swal({
@@ -28,13 +32,12 @@ $("#passwd").change(() =>{
 	}
 });
 
-$("#email").change(() => { 
-	let email = $("#email").val();
-	let emailRegex = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i;
-	if(email && emailRegex.test(email)){
-		$("#frm_email > input").removeClass("is-invalid");
+$("#rut").change(() =>{ 
+	let rut = $("#rut").val();
+	if(rut){
+		$("#frm_rut > input").removeClass("is-invalid");
 	}else{
-		$("#frm_email > input").addClass("is-invalid");
+		$("#frm_rut > input").addClass("is-invalid");
 	}
 });
 
@@ -49,12 +52,9 @@ $("#email_rec").change(() => {
 });
 
 login = () => {
-	let email = $("#email").val();
-	let passwd = $("#passwd").val();
-
-	let data = {
-		email: email,
-		passwd: passwd,
+	data = {
+		rut: $("#rut").val(),
+		passwd: $("#passwd").val(),
 	};
 	$.ajax({
 		data: {
@@ -83,7 +83,7 @@ login = () => {
 					text: addErrorStyle(msg),
 				}).then(() => {
 					if(msg.passwd){$("#frm_passwd > div").html(msg.passwd); $("#frm_passwd > input").addClass("is-invalid");}
-					if(msg.email){$("#frm_email > div").html(msg.email); $("#frm_email > input").addClass("is-invalid");}
+					if(msg.rut){$("#frm_rut > div").html(msg.rut); $("#frm_rut > input").addClass("is-invalid");}
 				});
 			},
 			401: (xhr) =>{

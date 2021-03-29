@@ -40,19 +40,19 @@
 </style>
 <body>
 <div class="chargePage"></div>
-<div class="container px-4 py-5 mx-auto">
+<div class="container px-5 py-5 mx-auto">
     <div class="card card1 mx-auto">
         <div class="row justify-content-center my-auto">
             <div class="col-md-8 col-10">
-                <div class="row justify-content-center"> <img id="logo" src="<?php echo base_url(); ?>assets/img/logos/eggs.jpg"> </div>
-                <h6 class="msg-info text-center">Comercial Ceballos </h6>
+                <div class="row justify-content-center"> <img id="logo" src="<?php echo base_url(); ?>assets/img/logos/login.png" style='width: 287px; height: 144px ;'> </div>
+                <h6 class="msg-info text-center">Ingrese las credenciales </h6>
                 <form>
-                  <div id="frm_email" class="form-floating mb-3"> 
-                    <label id="label_user" class="form-control-label text-muted">Usuario</label> 
-                    <input type="email" id="email" placeholder="Ingrese correo electrónico" name="email" class="form-control">
-                    <div class="invalid-feedback"></div>
-                  </div>
-                  <div id="frm_passwd" class="form-group"> 
+                  <div class="form-floating mb-3" id="frm_rut">
+                      <label class="form-control-label text-muted">Rut</label>
+                      <input type="text" class="form-control" id="rut" name="rut" placeholder="Ingrese rut">
+                      <div class="invalid-feedback"></div>
+                    </div>
+                  <div class="form-group" id="frm_passwd"> 
                     <label class="form-control-label text-muted">Contraseña</label> 
                     <input type="password" id="passwd" name="passwd" placeholder="Ingrese contraseña" class="form-control">
                     <div class="invalid-feedback"></div>
@@ -110,6 +110,7 @@
 <script src="<?php echo base_url(); ?>assets/js/utils_js/sb-admin-2.min.js"></script>
 <script>let msg = '<?= $mensaje ?>' ; if(msg) $('#msg').val(msg);
 </script>
+<script src="<?php echo base_url(); ?>assets/js/rut.js"></script>
 <script src="<?php echo base_url(); ?>assets/js/login.js"></script>
 </body>
 </html>
