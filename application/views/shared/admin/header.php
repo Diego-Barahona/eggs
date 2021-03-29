@@ -104,8 +104,13 @@
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Gestión Productos</h6>
+
+                        <a class="collapse-item" href="<?php echo base_url(); ?>adminEggs"><i class="fas fa-egg fa-fw"></i> Huevos</a>
+                        <a class="collapse-item" href=""><i class="fas fa-smoking fa-fw"></i> Cigarrillos</a>  
+
                         <a class="collapse-item" href=""><i class="fas fa-egg fa-fw"></i> Huevos</a>
                         <a class="collapse-item" href="<?php echo base_url(); ?>adminCigar"><i class="fas fa-smoking fa-fw"></i> Cigarrillos</a>  
+
                     </div>
                 </div>
                 <hr class="sidebar-divider">
