@@ -74,6 +74,7 @@ get_users = () => {
 	xhr.responseType = "json";
 	xhr.addEventListener("load", () => {
 		if (xhr.status === 200) {
+          
             let data = xhr.response[0].map((u) => {
 				if (u.state == 1) {
 					u.state = "Activo";

@@ -70,9 +70,19 @@ $route['api/update_user']['POST']= 'User/update';
 $route['api/des_hab_user']['POST']= 'User/des_hab';
 
 
+
 /*Admin Cigar*/
 $route['adminCigar']['GET']= 'Cigar/index';
 $route['api/getCigars']['GET']= 'Cigar/list';
 $route['api/createCigar']['POST']= 'Cigar/create';
 $route['api/updateCigar']['POST']= 'Cigar/update';
 $route['api/desHabCigar']['POST']= 'Cigar/desHab';
+
+/*Admin User*/
+/*api admin user*/
+$route['cliente']['GET']= 'Cliente/index';
+$route['api/get_clientes']['GET']= 'Cliente/list';
+$route['api/create_clientes']['POST']= 'Cliente/create';
+$route['api/update_clientes']['POST']= 'Cliente/update';
+$route['api/des_hab_clientes']['POST']= 'Cliente/des_hab';
+

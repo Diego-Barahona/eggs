@@ -83,6 +83,13 @@
                 </a>
             </li>
 
+            <li class="nav-item">
+                <a class="nav-link" href="<?php echo base_url(); ?>cliente">
+                    <i class="fas fa-user"></i>
+                    <span>Clientes</span>
+                </a>
+            </li>
+
             <!-- Divider -->
             <hr class="sidebar-divider">
 
