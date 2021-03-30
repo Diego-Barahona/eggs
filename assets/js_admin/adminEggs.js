@@ -43,6 +43,17 @@ const tabla = $("#table-eggs").DataTable({
 	language: {
 		url: "//cdn.datatables.net/plug-ins/1.10.20/i18n/Spanish.json",
 	},
+	"columnDefs": [
+        {
+            className: "text-center", "targets": [4] ,
+        },
+		{
+            className: "text-center", "targets": [5] ,
+        },
+		{
+            className: "text-center", "targets": [6] ,
+        },
+    ],
 	columns: [
 		{ data: "producto" },
         { data: "tipo" },
@@ -76,6 +87,11 @@ const tabla2 = $("#table-eggs-client").DataTable({
 	language: {
 		url: "//cdn.datatables.net/plug-ins/1.10.20/i18n/Spanish.json",
 	},
+	"columnDefs": [
+        {
+            className: "text-center", "targets": [2] ,
+        },
+    ],
 	columns: [
 		{ data: "nomCliente" },
         { data: "precioCliente" },

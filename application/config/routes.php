@@ -81,7 +81,7 @@ $route['api/getFields']['GET']= 'Eggs/getFields';
 $route['api/createEggClient']['POST']= 'Eggs/createEggClient';
 $route['api/getEggClient/(:num)']['GET']= 'Eggs/getEggClient/$1';
 //api eggs-client /
-=======
+
 
 
 /*Admin Cigar*/

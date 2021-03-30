@@ -27,7 +27,7 @@
       <div class="card-header">
         <i class="fas fa-table"></i>
         Lista de usuarios 
-        <button class="btn btn-success float-right" type='button' data-toggle="modal" id="btn" data-target="#modalCigar"><i class="fas fa-plus"></i> Crear Cigarro</button>
+        <button class="btn btn-success float-right" type='button' data-toggle="modal" id="btn" data-target="#modalCigar"><i class="fas fa-plus"></i> Registrar Cigarro</button>
       </div>
       <div class="card-body">
         <div class="table-responsive">
@@ -54,7 +54,7 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="titulo">Crear Cigarro</h5>
+                    <h5 class="modal-title" id="titulo">Registrar Cigarro</h5>
                     <button type="button" class="close" onclick="closeModalCigar()" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                     </button>

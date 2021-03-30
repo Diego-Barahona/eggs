@@ -63,12 +63,12 @@
                 <div class="modal-body">
                 <form>
                     <div class="form-group" id="frm_nomCliente">
-                        <label>nombre Cliente</label>
+                        <label>Nombre Cliente</label>
                         <input type="text" class="form-control" id="nomCliente" name="nomCliente" placeholder="Ingrese nombre Cliente">
                         <div class="invalid-feedback"></div>
                     </div>
                     <div class="form-group" id="frm_rutCliente" > 
-                        <label>rut Cliente</label> 
+                        <label>Rut Cliente</label> 
                         <input type="text" class="form-control"  id="rutCliente" name="rutCliente" placeholder="Ingrese rutCliente">
                         <div class="invalid-feedback"></div>
                     </div>
@@ -80,12 +80,12 @@
                     
                    
                     <div class="form-group" id="frm_nombreCalle"> 
-                        <label>nombreCalle</label> 
+                        <label>Nombre Calle</label> 
                         <input type="text" class="form-control"  id="nombreCalle" name="nombreCalle" placeholder="nombre de la calle" >
                         <div class="invalid-feedback"></div>
                     </div>  
                     <div class="form-group" id="frm_numCalle"> 
-                        <label>numero de calle </label> 
+                        <label>Numero de calle </label> 
                         <input type="text" class="form-control"  id="numCalle" name="numCalle" placeholder="Ingrese numero de casa" >
                         <div class="invalid-feedback"></div>
                     </div>    

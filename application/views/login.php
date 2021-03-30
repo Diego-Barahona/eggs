@@ -44,7 +44,7 @@
     <div class="card card1 mx-auto">
         <div class="row justify-content-center my-auto">
             <div class="col-md-8 col-10">
-                <div class="row justify-content-center"> <img id="logo" src="<?php echo base_url(); ?>assets/img/logos/login.png" style='width: 287px; height: 144px ;'> </div>
+                <div class="row justify-content-center"> <img id="logo" src="<?php echo base_url(); ?>assets/img/logos/login2.png" style='margin-left:20px; margin-bottom:-10px; width: 193px; height: 144px ;'> </div>
                 <h6 class="msg-info text-center">Ingrese las credenciales </h6>
                 <form>
                   <div class="form-floating mb-3" id="frm_rut">
