@@ -76,19 +76,71 @@ const tabla2 = $("#table-eggs-client").DataTable({
 	language: {
 		url: "//cdn.datatables.net/plug-ins/1.10.20/i18n/Spanish.json",
 	},
+
+	
 	columns: [
+		{ data: "id" },
 		{ data: "nomCliente" },
         { data: "precioCliente" },
         
-		{
-			defaultContent: `<button type='button' name='editButton' class='btn btn-primary'>
-                                  Editar
-                                  <i class="fas fa-edit"></i>
-                              </button>`,
-		},
+	
 		
 	],
 });
+
+
+$('#table-eggs-client').on('draw.dt', function(){
+	$('#table-eggs-client').Tabledit({
+	url:host_url + "api/editEggsClient",
+	dataType:'json',
+	columns:{
+	identifier : [0, 'id'],
+	editable:[ [2, 'precioCliente'], ]
+	},
+	
+    saveButton: true,
+    autoFocus: true,
+    buttons: {
+        edit: {
+            class: 'btn btn-sm btn-primary',
+            html: '<span class="glyphicon glyphicon-pencil"></span> &nbsp EDIT',
+            action: 'edit'
+        },
+		save: {
+			class: 'btn btn-sm btn-success',
+			html: 'Save'
+		},
+		
+    },
+	
+	onSuccess:function(result)
+	{
+		swal({
+			title: "Éxito!",
+			icon: "success",
+			text: result.msg,
+			button: "OK",
+		}).then(() => {
+			getEggClient();
+			getEggs();
+		});
+	},
+	onFail: function(result) {
+		swal({
+			title: "Error",
+			icon: "error",
+			text: result.responseJSON.msg,
+		}).then(() => {
+			getEggs();
+			getEggClient();
+		
+			
+		});
+    },
+
+	});
+	});
+
 
 
 addErrorStyle = (errores) => {
@@ -269,7 +321,7 @@ registerEggClient = () => {
 		client: $("#client").val(),
 		id:$('#id2').val(),
     };
-
+    console.log(data);
 
 	url = "api/createEggClient";
 	Object.keys(data).map((d) => $(`.${d}`).hide());
@@ -345,7 +397,7 @@ get_field = () => {
 			if(client.length == 0){
                 let rol = xhr.response.map((u) => {
                     let option = document.createElement("option"); 
-                    $(option).val(u.rutCliente); 
+                    $(option).val(u.id); 
                     $(option).attr('name', u.nomCliente);
                     $(option).html(u.nomCliente); 
                     $(option).appendTo("#client");

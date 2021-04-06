@@ -10,9 +10,9 @@ class EggsModel extends CI_Model
 
     public function getEggs()
     {
-        $query = "SELECT h.id ,h.stock as stock, h.tipoHuevo as tipo , p.name as producto , h.state
+        $query = "SELECT h.id as id ,h.stock as stock, h.tipoHuevo as tipo , p.name as producto , h.state
                   FROM huevo h
-                  LEFT JOIN producto p ON p.codProducto = h.codProducto
+                  LEFT JOIN tipoproducto p ON p.codProducto = h.codProducto
                   WHERE h.codProducto = 1
                   ";
         return $this->db->query($query)->result();
@@ -70,7 +70,7 @@ class EggsModel extends CI_Model
     }
 
     public function getfields() { 
-        $query = "SELECT nomCliente , rutCliente   FROM cliente  ";
+        $query = "SELECT nomCliente , id  FROM cliente  ";
         return $this->db->query($query)->result();
 
     }
@@ -84,13 +84,13 @@ class EggsModel extends CI_Model
 
         $query= "SELECT * 
         FROM clientehuevo 
-        WHERE rutCliente = ? AND codProducto = ?";
+        WHERE idCliente = ? AND codProducto = ?";
         $result= $this->db->query($query, array($client,$codProducto));
          
         if($result->num_rows() > 0){
             return false; 
         }else{
-            $query = "INSERT INTO clientehuevo (rutCliente, precioCliente ,codProducto) VALUES (?,?, ?)";
+            $query = "INSERT INTO clientehuevo (idCliente, precioCliente ,codProducto) VALUES (?,?, ?)";
             return $this->db->query($query, array($client,$precio,$codProducto));
         }
 
@@ -101,14 +101,49 @@ class EggsModel extends CI_Model
      
      
 
-        $query= "SELECT c.nomCliente, ch.precioCliente ,ch.id
+        $query= "SELECT c.nomCliente, ch.precioCliente ,ch.id as id
         FROM clientehuevo ch
-        LEFT JOIN cliente c ON ch.rutCliente = c.rutCliente
+        LEFT JOIN cliente c ON ch.idCliente = c.id
         WHERE ch.codProducto= ?";
         return $this->db->query($query, array($id))->result();
          
             
     }
+
+
+    public function editEggsClient($precio,$id) { 
+
+     $query = "UPDATE clientehuevo SET precioCliente= ? WHERE id=?";
+     return  $this->db->query($query,array($precio, $id));  
+     
+    }
+
+ /*
+
+    public function editEggsTest($stock,$tipo,$id){
+
+        $query= "SELECT * FROM huevo WHERE tipoHuevo = ?";
+        $result= $this->db->query($query, array($tipo));
+        
+        $aux = array( "tipoHuevo"=> $tipo,
+                        "stock"=> $stock,
+                        "id"=>$id
+        ); 
+       
+
+        if($result->num_rows() > 0  ){
+            $query = "UPDATE huevo SET stock = ? WHERE id=?";
+            $this->db->query($query,array($stock, $id));  
+            return true ;
+          
+
+        }else{
+
+            $query = "UPDATE huevo SET tipoHuevo= ? , stock = ? WHERE id=?";
+            return $this->db->query($query, $aux );  
+        }  
+
+    }*/
 
 
 
