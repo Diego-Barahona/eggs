@@ -84,7 +84,6 @@ $route['api/getEggClient/(:num)']['GET']= 'Eggs/getEggClient/$1';
 $route['api/editEggsClient']['POST']= 'Eggs/editEggsClient';
 //api eggs-client /
 
-
 /*Admin Cigar*/
 $route['adminCigar']['GET']= 'Cigar/index';
 $route['api/getCigars']['GET']= 'Cigar/list';

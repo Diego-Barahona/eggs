@@ -60,7 +60,7 @@
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center pb-4" href="">
 
-            <img src="<?php echo base_url(); ?>assets/img/logos/side.png" style="height:100px ;width:200px" >
+            <img src="<?php echo base_url(); ?>assets/img/logos/side2.png" style="height:100px ;width:150px" >
 
             </a>
            
@@ -82,7 +82,7 @@
                     <span>Usuarios</span>
                 </a>
             </li>
-
+            <hr class="sidebar-divider">
             <li class="nav-item">
                 <a class="nav-link" href="<?php echo base_url(); ?>cliente">
                     <i class="fas fa-user"></i>
@@ -105,9 +105,8 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Gestión Productos</h6>
 
-                        <a class="collapse-item" href="<?php echo base_url(); ?>adminEggs"><i class="fas fa-egg fa-fw"></i> Huevos</a>  
+                        <a class="collapse-item" href="<?php echo base_url(); ?>adminEggs"><i class="fas fa-egg fa-fw"></i> Huevos</a>
                         <a class="collapse-item" href="<?php echo base_url(); ?>adminCigar"><i class="fas fa-smoking fa-fw"></i> Cigarrillos</a>  
-                        <a class="collapse-item" href="<?php echo base_url(); ?>edittable"><i class="fas fa-smoking fa-fw"></i> Edittable</a>  
 
                     </div>
                 </div>

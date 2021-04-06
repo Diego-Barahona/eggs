@@ -26,7 +26,7 @@
       <div class="card mb-3">
       <div class="card-header" id="headingOne">
       <div style="padding-right: 40px">
-      <button class="btn btn-success float-right" type='button' data-toggle="modal"  id="register_eggs"><i class="fas fa-plus"></i> Registrar </button>
+      <button class="btn btn-success float-right" type='button' data-toggle="modal"  id="register_eggs"><i class="fas fa-plus"></i> Registrar Huevo </button>
     </div>
       </div>
       </div>
@@ -46,8 +46,8 @@
                 <th>Tipo </th>
                 <th>stock</th>
                 <th>Estado</th>
-                <th>Administración</th>
                 <th>Editar</th>
+                <th>Precios</th>
                 <th>Des/Habilitar</th>
               </tr>
             </thead>
