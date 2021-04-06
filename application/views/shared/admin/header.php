@@ -104,8 +104,10 @@
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Gestión Productos</h6>
+
                         <a class="collapse-item" href="<?php echo base_url(); ?>adminEggs"><i class="fas fa-egg fa-fw"></i> Huevos</a>
                         <a class="collapse-item" href="<?php echo base_url(); ?>adminCigar"><i class="fas fa-smoking fa-fw"></i> Cigarrillos</a>  
+
                     </div>
                 </div>
                 <hr class="sidebar-divider">
@@ -240,6 +242,7 @@
 
     <script src="<?php echo base_url(); ?>assets/vendor/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
     <script src="<?php echo base_url(); ?>assets/vendor/lodash/lodash.js"></script>
+    <script src="https://markcell.github.io/jquery-tabledit/assets/js/tabledit.min.js"></script>
    
   
     

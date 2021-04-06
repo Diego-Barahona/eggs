@@ -15,6 +15,18 @@ class Eggs extends CI_Controller
         }
     }
 
+    public function edittable()
+    { 
+        
+        if ($this->accesscontrol->checkAuth()['correct']) {
+            $this->load->view('shared/admin/header');
+            $this->load->view('admin/edittable');
+            $this->load->view('shared/admin/footer');
+        } else {
+            redirect('Home/login', 'refresh');
+        }
+    }
+
     public function getEggs()
     {
         if ($this->accesscontrol->checkAuth()['correct']) {
@@ -186,12 +198,77 @@ class Eggs extends CI_Controller
         }
     }
 
-    public function editEggsByClient () { 
+    public function editEggsClient () { 
+        //editTable configuration
+        if ($this->accesscontrol->checkAuth()['correct']) {
+        $id = $this->input->post('id');
+        $precio = $this->input->post('precioCliente');
+        $ok=true;
+        //   $action  = $this->input->post('action');   ---> edit
+        if ($precio == "") {
+            $ok = false;
+            $err['precio']  = "Ingrese un precio.";
+        }
+        if ($ok) {
+              
+            $this->load->model('EggsModel');
+           $res=$this->EggsModel->editEggsClient($precio,$id);
+            if($res){
+                $this->response->sendJSONResponse(array('msg' => "Guardado con exito .")); 
+            }else{
+                $this->response->sendJSONResponse(array('msg' => "No se ha podido guardar el registro" ), 400);
+            }
+           
+        } else {
+            $this->response->sendJSONResponse(array('msg' => "Complete los datos de la tabla." ,'err'=> $err), 400);
+        }
+      } else {
+        $this->response->sendJSONResponse(array('msg' => 'Permisos insuficientes'), 400);
+      }
 
-      
+    }
+
+/*
+     public function editEggsTest () { 
+
+        if ($this->accesscontrol->checkAuth()['correct']) {
+        $id = $this->input->post('id');
+        $tipo = $this->input->post('tipo');
+        $stock  = $this->input->post('stock');
+        $action  = $this->input->post('action');
+        $ok = true;
+        $err = array();
+
+        if ($stock == "") {
+            $ok = false;
+            $err['stock']  = "Ingrese un cliente.";
+        }
+        if ($tipo == "") {
+            $ok = false;
+            $err['tipo']  = "Ingrese un precio. ";
+        }
+
+        if ($ok) {
+              
+            $this->load->model('EggsModel');
+           $res=$this->EggsModel->editEggsTest($stock, $tipo,$id);
+            if($res){
+                $this->response->sendJSONResponse(array('msg' => "Guardado con exito .")); 
+            }else{
+                $this->response->sendJSONResponse(array('msg' => "El nombre ya existe. Reintente con otro." ), 400);
+            }
+           
+        } else {
+            $this->response->sendJSONResponse(array('msg' => "Complete los datos de la tabla." ,'err'=> $err), 400);
+        }
+    } else {
+        $this->response->sendJSONResponse(array('msg' => 'Permisos insuficientes'), 400);
     }
 
     
+   }
+
+    */
 
 
     

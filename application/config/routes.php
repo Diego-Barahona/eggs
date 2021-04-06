@@ -71,7 +71,7 @@ $route['api/des_hab_user']['POST']= 'User/des_hab';
 
 
 /* api eggs */
-
+$route['edittable']['GET']= 'Eggs/edittable';
 $route['adminEggs']['GET']= 'Eggs/adminEggs';
 $route['api/getEggs']['GET']= 'Eggs/getEggs';
 $route['api/changeStateEgg']['POST']= 'Eggs/changeStateEgg';
@@ -80,9 +80,9 @@ $route['api/createEgg']['POST']= 'Eggs/createEgg';
 $route['api/getFields']['GET']= 'Eggs/getFields';
 $route['api/createEggClient']['POST']= 'Eggs/createEggClient';
 $route['api/getEggClient/(:num)']['GET']= 'Eggs/getEggClient/$1';
+
+$route['api/editEggsClient']['POST']= 'Eggs/editEggsClient';
 //api eggs-client /
-
-
 
 /*Admin Cigar*/
 $route['adminCigar']['GET']= 'Cigar/index';
