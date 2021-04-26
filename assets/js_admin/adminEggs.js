@@ -78,7 +78,14 @@ const tabla2 = $("#table-eggs-client").DataTable({
 		url: "//cdn.datatables.net/plug-ins/1.10.20/i18n/Spanish.json",
 	},
 
-	
+
+	"columnDefs": [
+        {
+            className: "text-center", "targets": [2] ,
+        },
+    ],
+
+
 	columns: [
 		{ data: "id" },
 		{ data: "nomCliente" },

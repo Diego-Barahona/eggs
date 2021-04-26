@@ -80,14 +80,8 @@ $route['api/createEgg']['POST']= 'Eggs/createEgg';
 $route['api/getFields']['GET']= 'Eggs/getFields';
 $route['api/createEggClient']['POST']= 'Eggs/createEggClient';
 $route['api/getEggClient/(:num)']['GET']= 'Eggs/getEggClient/$1';
-
 $route['api/editEggsClient']['POST']= 'Eggs/editEggsClient';
-
-
-
 //api eggs-client /
-
-
 
 /*Admin Cigar*/
 $route['adminCigar']['GET']= 'Cigar/index';
@@ -103,6 +97,19 @@ $route['api/get_clientes']['GET']= 'Cliente/list';
 $route['api/create_clientes']['POST']= 'Cliente/create';
 $route['api/update_clientes']['POST']= 'Cliente/update';
 $route['api/des_hab_clientes']['POST']= 'Cliente/des_hab';
+
+/*api admin cost*/
+$route['adminCost']['GET']= 'Cost/adminCost';
+$route['api/getCost']['GET']= 'Cost/getCost';
+$route['api/createCost']['POST']= 'Cost/createCost';
+$route['api/editCost']['POST']= 'Cost/editCost';
+$route['api/getBuys/(:any)']['GET']= 'Cost/getBuys/$1';
+
+/*api Buys */
+$route['api/insertBuy']['POST']= 'Buy/insertBuy';
+$route['api/getSupplier']['GET']= 'Buy/getSupplier';
+$route['api/getProductSupplier/(:num)']['GET']= 'Buy/getProductSupplier/$1';
+
 
 
 /*Admin Routes*/
