@@ -20,6 +20,7 @@
     <!-- Custom styles for this template-->
     <link href="<?php echo base_url(); ?>assets/css_admin/sb-admin-2.min.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>assets/vendor/DataTables/datatables.min.css" rel="stylesheet" type="text/css" />
+    <link href="<?php echo base_url(); ?>assets/vendor/DataTables/fixedHeader.dataTables.min.css" rel="stylesheet" type="text/css" />
     <link href="<?php echo base_url(); ?>assets/vendor/jquery-ui-1.12.1.custom/jquery-ui.css" type="text/css" rel="stylesheet"/>
     <script>
     const host_url = "<?php echo base_url(); ?>";
@@ -124,8 +125,10 @@
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Gestión Productos</h6>
+
                         <a class="collapse-item" href="<?php echo base_url(); ?>adminEggs"><i class="fas fa-egg fa-fw"></i> Huevos</a>
                         <a class="collapse-item" href="<?php echo base_url(); ?>adminCigar"><i class="fas fa-smoking fa-fw"></i> Cigarrillos</a>  
+
                     </div>
                 </div>
                 <hr class="sidebar-divider">
@@ -143,7 +146,10 @@
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Gestión Caja</h6>
+
                         <a class="collapse-item" href="<?php echo base_url(); ?>gastosGenerales"><i class="fas fa-comments-dollar fa-fw"></i> Gastos</a>
+                        <a class="collapse-item" href="<?php echo base_url(); ?>adminCost"><i class="fas fa-comments-dollar fa-fw"></i> Costos</a>
+                        <a class="collapse-item" href=""><i class="fas fa-comments-dollar fa-fw"></i> Gastos</a>
                         <a class="collapse-item" href=""><i class="fas fa-clipboard-check fa-fw"></i> Ventas</a>  
                         <a class="collapse-item" href=""><i class="fas fa-coins fa-fw"></i> Utilidades</a>  
                     </div>
@@ -154,7 +160,7 @@
         
             <!-- Nav Item - Routes-->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#">
+                <a class="nav-link collapsed" href="<?php echo base_url(); ?>adminRoutes">
                 <i class="fas fa-map-signs"></i>
                     <span>Rutas</span>
                 </a>
@@ -253,6 +259,7 @@
     <!-- Core plugin JavaScript-->
     <script src="<?php echo base_url(); ?>assets/vendor/jquery-easing/jquery.easing.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/vendor/DataTables/datatables.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/vendor/DataTables/dataTables.fixedHeader.min.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <!-- Custom scripts for all pages-->
     <script src="<?php echo base_url(); ?>assets/js_admin/sb-admin-2.min.js"></script>
@@ -260,6 +267,10 @@
 
     <script src="<?php echo base_url(); ?>assets/vendor/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
     <script src="<?php echo base_url(); ?>assets/vendor/lodash/lodash.js"></script>
+    <script src="https://markcell.github.io/jquery-tabledit/assets/js/tabledit.min.js"></script>
+    <script src="  https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
+    
+
    
   
     

@@ -71,7 +71,7 @@ $route['api/des_hab_user']['POST']= 'User/des_hab';
 
 
 /* api eggs */
-
+$route['edittable']['GET']= 'Eggs/edittable';
 $route['adminEggs']['GET']= 'Eggs/adminEggs';
 $route['api/getEggs']['GET']= 'Eggs/getEggs';
 $route['api/changeStateEgg']['POST']= 'Eggs/changeStateEgg';
@@ -80,9 +80,8 @@ $route['api/createEgg']['POST']= 'Eggs/createEgg';
 $route['api/getFields']['GET']= 'Eggs/getFields';
 $route['api/createEggClient']['POST']= 'Eggs/createEggClient';
 $route['api/getEggClient/(:num)']['GET']= 'Eggs/getEggClient/$1';
+$route['api/editEggsClient']['POST']= 'Eggs/editEggsClient';
 //api eggs-client /
-
-
 
 /*Admin Cigar*/
 $route['adminCigar']['GET']= 'Cigar/index';
@@ -124,3 +123,33 @@ $route['api/get_proveedorHuevo']['GET']= 'ProveedorHuevo/list';
 /*api admin Proveedor*/
 $route['adminProveedorCigarro']['GET']= 'ProveedorCigarro/index';
 $route['api/get_proveedorCigarro']['GET']= 'ProveedorCigarro/list';
+
+/*api admin cost*/
+$route['adminCost']['GET']= 'Cost/adminCost';
+$route['api/getCost']['GET']= 'Cost/getCost';
+$route['api/createCost']['POST']= 'Cost/createCost';
+$route['api/editCost']['POST']= 'Cost/editCost';
+$route['api/getBuys/(:any)']['GET']= 'Cost/getBuys/$1';
+
+/*api Buys */
+$route['api/insertBuy']['POST']= 'Buy/insertBuy';
+$route['api/getSupplier']['GET']= 'Buy/getSupplier';
+$route['api/getProductSupplier/(:num)']['GET']= 'Buy/getProductSupplier/$1';
+
+
+
+/*Admin Routes*/
+$route['adminRoutes']['GET']= 'Routes/index';
+
+$route['adminCreateRoute']['GET']= 'Routes/indexCreate';
+$route['adminDetailsRoute']['GET'] = 'Routes/adminDetails/$1';
+$route['adminUpdateRoute']['GET'] = 'Routes/adminUpdate/$1';
+$route['api/routes/getRoutes']['GET']= 'Routes/list';
+$route['api/routes/getDataForm']['GET']= 'Routes/getDataForm';
+$route['api/routes/getDataFormUpdate']['GET']= 'Routes/getDataFormUpdate/$1';
+$route['api/routes/getDataClient']['POST']= 'Routes/getDataClient';
+$route['api/routes/createRoute']['POST'] = 'Routes/create';
+$route['api/routes/detailsRoute']['POST'] = 'Routes/details';
+$route['api/routes/updateRoute']['POST'] = 'Routes/update';
+$route['api/routes/deleteRoute']['GET'] = 'Routes/delete/$1';
+
