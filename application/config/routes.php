@@ -99,4 +99,17 @@ $route['api/create_clientes']['POST']= 'Cliente/create';
 $route['api/update_clientes']['POST']= 'Cliente/update';
 $route['api/des_hab_clientes']['POST']= 'Cliente/des_hab';
 
+/*api admin cost*/
+$route['adminCost']['GET']= 'Cost/adminCost';
+$route['api/getCost']['GET']= 'Cost/getCost';
+$route['api/createCost']['POST']= 'Cost/createCost';
+$route['api/editCost']['POST']= 'Cost/editCost';
+$route['api/getBuys/(:any)']['GET']= 'Cost/getBuys/$1';
+
+/*api Buys */
+$route['api/insertBuy']['POST']= 'Buy/insertBuy';
+$route['api/getSupplier']['GET']= 'Buy/getSupplier';
+$route['api/getProductSupplier/(:num)']['GET']= 'Buy/getProductSupplier/$1';
+
+
 

@@ -45,18 +45,24 @@ class Eggs extends CI_Controller
             $data = $this->input->post('data');
             $tipo = $data['tipoHuevo'];
             $stock = $data['stock'];
+            $format = $data['format'];
 
             $ok = true;
             $err = array();
 
             if ($tipo == "") {
                 $ok = false;
-                $err['name']  = "Ingrese un nombre.";
+                $err['tipoHuevo']  = "Ingrese un nombre.";
             }
             if ($stock == "") {
                 $ok = false;
                 $err['stock']  = "Ingrese una cantidad ";
             }
+            if ($format == "") {
+                $ok = false;
+                $err['format']  = "Ingrese un formato ";
+            }
+
 
             if ($ok) {
               
@@ -85,6 +91,7 @@ class Eggs extends CI_Controller
 			$data = $this->input->post('data');
             $tipo = $data['tipoHuevo'];
             $stock = $data['stock'];
+            $format = $data['format'];
 			$ok = true;
 			$err = array();
 
@@ -96,6 +103,12 @@ class Eggs extends CI_Controller
                 $ok = false;
                 $err['stock']  = "Ingrese una cantidad ";
             }
+
+            if ($format == "") {
+                $ok = false;
+                $err['format']  = "Ingrese un formato";
+            }
+			
 			
 			if ($ok) {
 				$this->load->model('EggsModel');

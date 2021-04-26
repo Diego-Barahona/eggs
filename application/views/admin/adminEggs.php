@@ -44,7 +44,8 @@
               <tr>
                 <th>Producto</th>
                 <th>Tipo </th>
-                <th>stock</th>
+                <th>Producto por unidad </th>
+                <th>Stock unidades</th>
                 <th>Estado</th>
                 <th>Editar</th>
                 <th>Precios</th>
@@ -88,8 +89,13 @@
                  <div class="invalid-feedback"></div>
             </div>
             <div class="form-group" id="frm_stock">
-                <label>Stock</label>
-                <input type="number" class="form-control" id="stock" min="1" pattern="^[0-9]+" name="stock" placeholder="Ingrese nombre">
+                <label>Cantidad huevos por unidad</label>
+                <input type="number" class="form-control" id="format" min="1" pattern="^[0-9]+" name="format" placeholder="Ingrese cantidad">
+                 <div class="invalid-feedback"></div>
+            </div>
+            <div class="form-group" id="frm_stock">
+                <label>Stock de unidades</label>
+                <input type="number" class="form-control" id="stock" min="1" pattern="^[0-9]+" name="stock" placeholder="Ingrese stock">
                  <div class="invalid-feedback"></div>
             </div>
             <div class="form-group float-right">
@@ -155,8 +161,7 @@
               <tr>
                 <th>Id</th>
                 <th>Nombre cliente</th>
-                <th>Precio</th>
-           
+                <th>Precio de venta</th> 
               </tr>
             </thead>
           </table>
