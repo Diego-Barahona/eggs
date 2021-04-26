@@ -238,7 +238,7 @@ create_edit_user = () =>{
     });  
  }
 
- /*Función para des/habilitar una empresa */
+/*Función para des/habilitar una empresa */
 des_hab_user= (rut, state) => {
     let state_change = (state == 0 ? 1 : 0);
     let data = {

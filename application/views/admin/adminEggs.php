@@ -26,7 +26,7 @@
       <div class="card mb-3">
       <div class="card-header" id="headingOne">
       <div style="padding-right: 40px">
-      <button class="btn btn-success float-right" type='button' data-toggle="modal"  id="register_eggs"><i class="fas fa-plus"></i> Registrar Huevo </button>
+      <button class="btn btn-success float-right" type='button' data-toggle="modal"  id="register_eggs"><i class="fas fa-plus"></i> Registrar </button>
     </div>
       </div>
       </div>
@@ -44,10 +44,11 @@
               <tr>
                 <th>Producto</th>
                 <th>Tipo </th>
-                <th>stock</th>
+                <th>Producto por unidad </th>
+                <th>Stock unidades</th>
                 <th>Estado</th>
+                <th>Administración</th>
                 <th>Editar</th>
-                <th>Precios</th>
                 <th>Des/Habilitar</th>
               </tr>
             </thead>
@@ -88,8 +89,13 @@
                  <div class="invalid-feedback"></div>
             </div>
             <div class="form-group" id="frm_stock">
-                <label>Stock</label>
-                <input type="number" class="form-control" id="stock" min="1" pattern="^[0-9]+" name="stock" placeholder="Ingrese nombre">
+                <label>Cantidad huevos por unidad</label>
+                <input type="number" class="form-control" id="format" min="1" pattern="^[0-9]+" name="format" placeholder="Ingrese cantidad">
+                 <div class="invalid-feedback"></div>
+            </div>
+            <div class="form-group" id="frm_stock">
+                <label>Stock de unidades</label>
+                <input type="number" class="form-control" id="stock" min="1" pattern="^[0-9]+" name="stock" placeholder="Ingrese stock">
                  <div class="invalid-feedback"></div>
             </div>
             <div class="form-group float-right">
@@ -153,9 +159,9 @@
           <table class="table table-bordered" id="table-eggs-client" width="100%" cellspacing="0">
             <thead>
               <tr>
+                <th>Id</th>
                 <th>Nombre cliente</th>
-                <th>Precio</th>
-                <th>Acciones</th>
+                <th>Precio de venta</th> 
               </tr>
             </thead>
           </table>

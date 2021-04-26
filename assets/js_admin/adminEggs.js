@@ -43,20 +43,10 @@ const tabla = $("#table-eggs").DataTable({
 	language: {
 		url: "//cdn.datatables.net/plug-ins/1.10.20/i18n/Spanish.json",
 	},
-	"columnDefs": [
-        {
-            className: "text-center", "targets": [4] ,
-        },
-		{
-            className: "text-center", "targets": [5] ,
-        },
-		{
-            className: "text-center", "targets": [6] ,
-        },
-    ],
 	columns: [
 		{ data: "producto" },
         { data: "tipo" },
+		{ data: "format"},
         { data: "stock" },
 		{ data: "state" },
 		{
@@ -87,24 +77,71 @@ const tabla2 = $("#table-eggs-client").DataTable({
 	language: {
 		url: "//cdn.datatables.net/plug-ins/1.10.20/i18n/Spanish.json",
 	},
-	"columnDefs": [
-        {
-            className: "text-center", "targets": [2] ,
-        },
-    ],
+
+	
 	columns: [
+		{ data: "id" },
 		{ data: "nomCliente" },
         { data: "precioCliente" },
         
-		{
-			defaultContent: `<button type='button' name='editButton' class='btn btn-primary'>
-                                  Editar
-                                  <i class="fas fa-edit"></i>
-                              </button>`,
-		},
+	
 		
 	],
 });
+
+
+$('#table-eggs-client').on('draw.dt', function(){
+	$('#table-eggs-client').Tabledit({
+	url:host_url + "api/editEggsClient",
+	dataType:'json',
+	columns:{
+	identifier : [0, 'id'],
+	editable:[ [2, 'precioCliente'], ]
+	},
+	
+    saveButton: true,
+    autoFocus: true,
+    buttons: {
+        edit: {
+            class: 'btn btn-sm btn-primary',
+            html: '<span class="glyphicon glyphicon-pencil"></span> &nbsp EDIT',
+            action: 'edit'
+        },
+		save: {
+			class: 'btn btn-sm btn-success',
+			html: 'Save'
+		},
+		
+    },
+	
+	onSuccess:function(result)
+	{
+		swal({
+			title: "Éxito!",
+			icon: "success",
+			text: result.msg,
+			button: "OK",
+		}).then(() => {
+			getEggClient();
+			getEggs();
+		});
+	},
+	onFail: function(result) {
+		swal({
+			title: "Error",
+			icon: "error",
+			text: result.responseJSON.msg,
+		}).then(() => {
+			getEggs();
+			getEggClient();
+		
+			
+		});
+    },
+
+	});
+	});
+
 
 
 addErrorStyle = (errores) => {
@@ -185,6 +222,7 @@ $("#table-eggs").on("click", "button", function () {
         $("#title").text("Modificar producto");
         $("#tipoHuevo").val(data.tipo);
 		$("#stock").val(data.stock);
+		$("#format").val(data.format);
 		$("#id").val(data.id);
 		$("#modal_eggs").modal("show");
 	}}
@@ -227,6 +265,7 @@ registerEgg = () => {
 	let data = {
 		tipoHuevo: $("#tipoHuevo").val(),
 		stock: $("#stock").val(),
+		format: $("#format").val(),
 		id:$('#id').val(),
     };
  
@@ -285,7 +324,7 @@ registerEggClient = () => {
 		client: $("#client").val(),
 		id:$('#id2').val(),
     };
-
+    console.log(data);
 
 	url = "api/createEggClient";
 	Object.keys(data).map((d) => $(`.${d}`).hide());
@@ -361,7 +400,7 @@ get_field = () => {
 			if(client.length == 0){
                 let rol = xhr.response.map((u) => {
                     let option = document.createElement("option"); 
-                    $(option).val(u.rutCliente); 
+                    $(option).val(u.id); 
                     $(option).attr('name', u.nomCliente);
                     $(option).html(u.nomCliente); 
                     $(option).appendTo("#client");
@@ -384,9 +423,12 @@ cleanInput = () => {
     $("#title").text("Registrar producto");
     $("#id").val("");
 	$("#tipoHuevo").val("");
+	$(`.tipoHuevo`).hide();
 	$("#stock").val("");
 	$(`.stock`).hide();
-	$(`.tipoHuevo`).hide();
+	$("#format").val("");
+	$(`.format`).hide();
+
     $(`.id`).hide();
 	$("#frm_stock > input").removeClass("is-invalid");
 	$("#frm_tipoHuevo > input").removeClass("is-invalid");

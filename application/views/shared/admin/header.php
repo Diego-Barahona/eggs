@@ -20,6 +20,7 @@
     <!-- Custom styles for this template-->
     <link href="<?php echo base_url(); ?>assets/css_admin/sb-admin-2.min.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>assets/vendor/DataTables/datatables.min.css" rel="stylesheet" type="text/css" />
+    <link href="<?php echo base_url(); ?>assets/vendor/DataTables/fixedHeader.dataTables.min.css" rel="stylesheet" type="text/css" />
     <link href="<?php echo base_url(); ?>assets/vendor/jquery-ui-1.12.1.custom/jquery-ui.css" type="text/css" rel="stylesheet"/>
     <script>
     const host_url = "<?php echo base_url(); ?>";
@@ -134,7 +135,7 @@
         
             <!-- Nav Item - Routes-->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#">
+                <a class="nav-link collapsed" href="<?php echo base_url(); ?>adminRoutes">
                 <i class="fas fa-map-signs"></i>
                     <span>Rutas</span>
                 </a>
@@ -233,6 +234,7 @@
     <!-- Core plugin JavaScript-->
     <script src="<?php echo base_url(); ?>assets/vendor/jquery-easing/jquery.easing.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/vendor/DataTables/datatables.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/vendor/DataTables/dataTables.fixedHeader.min.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <!-- Custom scripts for all pages-->
     <script src="<?php echo base_url(); ?>assets/js_admin/sb-admin-2.min.js"></script>
@@ -240,6 +242,7 @@
 
     <script src="<?php echo base_url(); ?>assets/vendor/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
     <script src="<?php echo base_url(); ?>assets/vendor/lodash/lodash.js"></script>
+    <script src="https://markcell.github.io/jquery-tabledit/assets/js/tabledit.min.js"></script>
    
   
     
