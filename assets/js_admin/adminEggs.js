@@ -46,6 +46,7 @@ const tabla = $("#table-eggs").DataTable({
 	columns: [
 		{ data: "producto" },
         { data: "tipo" },
+		{ data: "format"},
         { data: "stock" },
 		{ data: "state" },
 		{
@@ -221,6 +222,7 @@ $("#table-eggs").on("click", "button", function () {
         $("#title").text("Modificar producto");
         $("#tipoHuevo").val(data.tipo);
 		$("#stock").val(data.stock);
+		$("#format").val(data.format);
 		$("#id").val(data.id);
 		$("#modal_eggs").modal("show");
 	}}
@@ -263,6 +265,7 @@ registerEgg = () => {
 	let data = {
 		tipoHuevo: $("#tipoHuevo").val(),
 		stock: $("#stock").val(),
+		format: $("#format").val(),
 		id:$('#id').val(),
     };
  
@@ -420,9 +423,12 @@ cleanInput = () => {
     $("#title").text("Registrar producto");
     $("#id").val("");
 	$("#tipoHuevo").val("");
+	$(`.tipoHuevo`).hide();
 	$("#stock").val("");
 	$(`.stock`).hide();
-	$(`.tipoHuevo`).hide();
+	$("#format").val("");
+	$(`.format`).hide();
+
     $(`.id`).hide();
 	$("#frm_stock > input").removeClass("is-invalid");
 	$("#frm_tipoHuevo > input").removeClass("is-invalid");

@@ -107,8 +107,7 @@
 
                         <a class="collapse-item" href="<?php echo base_url(); ?>adminEggs"><i class="fas fa-egg fa-fw"></i> Huevos</a>  
                         <a class="collapse-item" href="<?php echo base_url(); ?>adminCigar"><i class="fas fa-smoking fa-fw"></i> Cigarrillos</a>  
-                        <a class="collapse-item" href="<?php echo base_url(); ?>edittable"><i class="fas fa-smoking fa-fw"></i> Edittable</a>  
-
+                
                     </div>
                 </div>
                 <hr class="sidebar-divider">
@@ -126,6 +125,7 @@
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Gestión Caja</h6>
+                        <a class="collapse-item" href="<?php echo base_url(); ?>adminCost"><i class="fas fa-comments-dollar fa-fw"></i> Costos</a>
                         <a class="collapse-item" href=""><i class="fas fa-comments-dollar fa-fw"></i> Gastos</a>
                         <a class="collapse-item" href=""><i class="fas fa-clipboard-check fa-fw"></i> Ventas</a>  
                         <a class="collapse-item" href=""><i class="fas fa-coins fa-fw"></i> Utilidades</a>  
@@ -244,6 +244,12 @@
     <script src="<?php echo base_url(); ?>assets/vendor/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
     <script src="<?php echo base_url(); ?>assets/vendor/lodash/lodash.js"></script>
     <script src="https://markcell.github.io/jquery-tabledit/assets/js/tabledit.min.js"></script>
+    <script src="  https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
+    
+
+
+
+
    
   
     
