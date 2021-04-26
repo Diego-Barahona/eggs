@@ -80,7 +80,6 @@ $route['api/createEgg']['POST']= 'Eggs/createEgg';
 $route['api/getFields']['GET']= 'Eggs/getFields';
 $route['api/createEggClient']['POST']= 'Eggs/createEggClient';
 $route['api/getEggClient/(:num)']['GET']= 'Eggs/getEggClient/$1';
-
 $route['api/editEggsClient']['POST']= 'Eggs/editEggsClient';
 //api eggs-client /
 
@@ -113,3 +112,17 @@ $route['api/getProductSupplier/(:num)']['GET']= 'Buy/getProductSupplier/$1';
 
 
 
+/*Admin Routes*/
+$route['adminRoutes']['GET']= 'Routes/index';
+
+$route['adminCreateRoute']['GET']= 'Routes/indexCreate';
+$route['adminDetailsRoute']['GET'] = 'Routes/adminDetails/$1';
+$route['adminUpdateRoute']['GET'] = 'Routes/adminUpdate/$1';
+$route['api/routes/getRoutes']['GET']= 'Routes/list';
+$route['api/routes/getDataForm']['GET']= 'Routes/getDataForm';
+$route['api/routes/getDataFormUpdate']['GET']= 'Routes/getDataFormUpdate/$1';
+$route['api/routes/getDataClient']['POST']= 'Routes/getDataClient';
+$route['api/routes/createRoute']['POST'] = 'Routes/create';
+$route['api/routes/detailsRoute']['POST'] = 'Routes/details';
+$route['api/routes/updateRoute']['POST'] = 'Routes/update';
+$route['api/routes/deleteRoute']['GET'] = 'Routes/delete/$1';
