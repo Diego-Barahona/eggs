@@ -98,6 +98,32 @@ $route['api/create_clientes']['POST']= 'Cliente/create';
 $route['api/update_clientes']['POST']= 'Cliente/update';
 $route['api/des_hab_clientes']['POST']= 'Cliente/des_hab';
 
+/*Admin gastos*/
+/*api admin gastos*/
+$route['gastosGenerales']['GET']= 'Gastos/index';
+$route['api/get_gastos']['GET']= 'Gastos/list';
+$route['api/create_gastos']['POST']= 'Gastos/create';
+$route['api/update_gastos']['POST']= 'Gastos/update';
+$route['api/des_hab_gastos']['POST']= 'Gastos/des_hab';
+
+/*Admin Proveedor*/
+/*api admin Proveedor*/
+$route['adminProveedor']['GET']= 'Proveedor/index';
+$route['api/get_proveedor']['GET']= 'Proveedor/list';
+$route['api/create_proveedor']['POST']= 'Proveedor/create';
+$route['api/update_proveedor']['POST']= 'Proveedor/update';
+$route['api/des_hab_proveedor']['POST']= 'Proveedor/des_hab';
+
+/*Admin ProveedorHuevo*/
+/*api admin Proveedor*/
+$route['adminProveedorHuevo']['GET']= 'ProveedorHuevo/index';
+$route['api/get_proveedorHuevo']['GET']= 'ProveedorHuevo/list';
+
+/*Admin ProveedorCigarro*/
+/*api admin Proveedor*/
+$route['adminProveedorCigarro']['GET']= 'ProveedorCigarro/index';
+$route['api/get_proveedorCigarro']['GET']= 'ProveedorCigarro/list';
+
 /*api admin cost*/
 $route['adminCost']['GET']= 'Cost/adminCost';
 $route['api/getCost']['GET']= 'Cost/getCost';
@@ -126,3 +152,4 @@ $route['api/routes/createRoute']['POST'] = 'Routes/create';
 $route['api/routes/detailsRoute']['POST'] = 'Routes/details';
 $route['api/routes/updateRoute']['POST'] = 'Routes/update';
 $route['api/routes/deleteRoute']['GET'] = 'Routes/delete/$1';
+
