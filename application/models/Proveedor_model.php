@@ -22,7 +22,7 @@ class Proveedor_model extends CI_Model {
         }else{
             
             $datos_proveedores = array(
-                'nomProveedor' => $data['nomProveedor'],
+                'nombre' => $data['nomProveedor'],
                 'rutProveedor' => $data['rutProveedor'],
                 'telefono' => $data['telefono'],
                 'correoProveedor' => $data['correoProveedor'],
@@ -45,7 +45,7 @@ class Proveedor_model extends CI_Model {
             return false;
         }else{
             $datos_proveedores = array(
-                'nomProveedor' => $data['nomProveedor'],
+                'nombre' => $data['nomProveedor'],
                 'rutProveedor' => $data['rutProveedor'],
                 'telefono' => $data['telefono'],
                 'correoProveedor' => $data['correoProveedor'],

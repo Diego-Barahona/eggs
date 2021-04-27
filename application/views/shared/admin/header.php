@@ -149,7 +149,6 @@
 
                         <a class="collapse-item" href="<?php echo base_url(); ?>gastosGenerales"><i class="fas fa-comments-dollar fa-fw"></i> Gastos</a>
                         <a class="collapse-item" href="<?php echo base_url(); ?>adminCost"><i class="fas fa-comments-dollar fa-fw"></i> Costos</a>
-                        <a class="collapse-item" href=""><i class="fas fa-comments-dollar fa-fw"></i> Gastos</a>
                         <a class="collapse-item" href=""><i class="fas fa-clipboard-check fa-fw"></i> Ventas</a>  
                         <a class="collapse-item" href=""><i class="fas fa-coins fa-fw"></i> Utilidades</a>  
                     </div>

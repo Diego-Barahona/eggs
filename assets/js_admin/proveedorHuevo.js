@@ -45,7 +45,7 @@ const tablaProveedorHuevo = $('#list_proveedorHuevo').DataTable({
 	},
 	columns: [
 		{ data: "id" },
-        { data: "nomProveedor" },
+        { data: "nombre" },
         { data: "codProducto" },
       
        

@@ -122,7 +122,7 @@ const tablaProveedor = $('#list_proveedor').DataTable({
 	},
 	columns: [
 		{data:"id"},
-        { data: "nomProveedor" },
+        { data: "nombre" },
         { data: "rutProveedor" },
         { data: "telefono" },
         { data: "correoProveedor" },
@@ -186,7 +186,7 @@ create_edit_proveedor = () =>{
     let rutProveedor = $("#rutProveedor").val();
     let telefono = $("#telefono").val();
     let correoProveedor = $("#correoProveedor").val();
-    let codProducto = ($("#codProducto").val()== "Huevo" ?1: 0);
+    let codProducto = $("#codProducto").val();
     let state = ($("#state").val() == "Activo" ? 1 : 0);
     if(edit){
      url = "api/update_proveedor";
@@ -294,15 +294,17 @@ show_info_update_proveedor = (data) =>{
     edit = true;
     rutProveedorEdit = data.rutProveedor;
     
-    $("#nomProveedor").val(data.nomProveedor);
+    $("#nomProveedor").val(data.nombre);
     $("#rutProveedor").val(data.rutProveedor);
     $("#telefono").val(data.telefono);
     $("#correoProveedor").val(data.correoProveedor);
-    $("#codProducto").val(data.codProducto);
+
+    console.log(data.codProducto);
+    let a = $(`option[name ="${data.codProducto}"]`).val();
+    $("#codProducto").val(a);
 
 
-    let a = $(`option[name ="${data.description}"]`).val();
-    $("#range").val(a);
+
     $("#state").val(data.state);
 
     $("#frm_state").show();

@@ -60,20 +60,7 @@ class Cost extends CI_Controller {
             $array = json_decode($productos, true);
 
 
-            foreach ($array as $value) {
-                $datos= array(  
-                "tipoProducto" => $value['tipoProducto'],
-                "producto" => $value['producto'],
-                "valor" => $value['valor'],
-                "cantidad" => $value['cantidad'],
-                "total" => $value['total'],
-                "codigo" => $value['codigo'],
-                );
-
-                $this->load->model('BuyModel');
-                $res=$this->BuyModel->insertBuy($datos);
-           }
-           
+            
 
      
             $ok = true;
@@ -103,6 +90,21 @@ class Cost extends CI_Controller {
                 $this->load->model('CostModel');
                $res=$this->CostModel->insertCost($data);//guardar en tabla de costos 
                 if($res){
+                    foreach ($array as $value) {
+                        $datos= array(  
+                        "tipoProducto" => $value['tipoProducto'],
+                        "producto" => $value['producto'],
+                        "valor" => $value['valor'],
+                        "cantidad" => $value['cantidad'],
+                        "total" => $value['total'],
+                        "codigo" => $value['codigo'],
+                        );
+
+        
+                        $this->load->model('BuyModel');
+                        $res=$this->BuyModel->insertBuy($datos);
+                   }
+                   
                     $this->response->sendJSONResponse(array('msg' => "Producto registrado.")); 
                 }else{
                     $this->response->sendJSONResponse(array('msg' => "El codigo ya existe. Reintente con otro." ), 400);
