@@ -146,7 +146,7 @@ $("#list_gastos").on("click", "button", function () {
     if ($(this)[0].name == "btn_des_hab") {
         show_info_des_hab_gastos(data.idGastoGeneral);
     } else {
-        show_info_update_gastos(data.idGastoGeneral);
+        show_info_update_gastos(data);
     }
 });
 
@@ -270,6 +270,7 @@ des_hab_gastos= (idGastoGeneral) => {
 
 // /*Función para preparar la información a editar*/
 show_info_update_gastos = (data) =>{
+    console.log(data);
     edit = true;
     nomGastoGeneralEdit = data.nomGastoGeneral;
     idGastoEdit = data.idGastoGeneral;

@@ -14,15 +14,14 @@ class BuyModel extends CI_Model
         $codigo= $data['codigo'];
         $validacion = "SELECT * FROM costos WHERE id =?" ;
         $row = $this->db->query($validacion, array($codigo)); 
-        
+       
         $tipo=$data['tipoProducto'];
-    
         
-        if ($row->num_rows() == 0 ) { 
+      
+       /*  if ($row->num_rows() == 0 ) {  */
         //1 es huevo 
        
        if($tipo == "2" ){
-     
         $idProducto= $data['producto'];
         $cigar = "SELECT stock FROM cigarros WHERE id =?" ;
         $result = $this->db->query($cigar, array($idProducto))->row_array(); 
@@ -31,21 +30,21 @@ class BuyModel extends CI_Model
         $query = "UPDATE cigarros SET stock= ? WHERE id=?";
         $this->db->query($query,array($stock_actual, $idProducto)); 
     
-        $compra=array(
-            'cantidad'=> $data['cantidad'],
-            'precioCompra'=> $data['valor'],
-            'total'=> $data['total'],
-            'stockReal'=> $stock_actual,
-            'costoId'=>  $data['codigo'] ,
-            'cigarroId'=>  $data['producto'], // cambiar cuando se implemente ! a dinamico
-                    );
-       
+            $compra=array(
+                'cantidad'=> $data['cantidad'],
+                'precioCompra'=> $data['valor'],
+                'total'=> $data['total'],
+                'stockReal'=> $stock_actual,
+                'costoId'=>  $data['codigo'] ,
+                'cigarroId'=>  $data['producto'], // cambiar cuando se implemente ! a dinamico
+                        );
+        
 
 
-                                               //sumar a stock de cigarro
-
-        $query = "INSERT INTO compra_cigarro(cantidad,precioCompra,total,stockReal,costoId,cigarroId) VALUES (?,?,?,?,?,?)";
-        return $this->db->query($query, $compra);
+                                                //sumar a stock de cigarro
+    
+            $query = "INSERT INTO compra_cigarro(cantidad,precioCompra,total,stockReal,costoId,cigarroId) VALUES (?,?,?,?,?,?)";
+            return $this->db->query($query, $compra);
           
          } else { 
             
@@ -74,10 +73,10 @@ class BuyModel extends CI_Model
         } 
         
 
-    }else{
+    /* }else{
 
         return false;
-    }
+    } */
 
     }
 

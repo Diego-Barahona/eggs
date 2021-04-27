@@ -45,7 +45,7 @@ const tablaProveedorCigarro = $('#list_proveedorCigarro').DataTable({
 	},
 	columns: [
 		{ data: "id" },
-        { data: "nomProveedor" },
+        { data: "nombre" },
         { data: "codProducto" },
       
        

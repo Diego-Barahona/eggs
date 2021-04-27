@@ -88,8 +88,8 @@
                     <div class="form-group" id="frm_codProducto"> 
                         <label>Producto </label> 
                         <select name=" codProducto " id="codProducto" placeholder="Ingrese producto ">
-                        <option value="1">Huevo</option>
-                        <option value="2">cigarro</option>
+                        <option name='Huevos' value="1">Huevos</option>
+                        <option name='Cigarros' value="2">Cigarros</option>
                         <!-- <input type="text" class="form-control"  id="codProducto" name="codProducto" placeholder="Ingrese producto " > -->
                         <div class="invalid-feedback"></div>
                     </div>    
