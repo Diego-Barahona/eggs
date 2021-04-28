@@ -7,11 +7,12 @@ class ProveedorCigarro_model extends CI_Model {
     }
 
     public function get_proveedorCigarro(){
-        $this->db->select('p.id,p.nombre,p.codProducto');
-        $this->db->from('proveedor p');
-        $this->db->where('p.codProducto = 2');
-        return $query = $this->db->get()->result();
+        $query = "SELECT p.nombre proveedor, c.nombre cigarro, cp.precioVenta precio
+        FROM proveedor p
+        LEFT JOIN cigarro_proveedor cp ON p.id = cp.proveedorId
+        LEFT JOIN cigarros c ON cp.cigarroId = c.id
+        WHERE p.codProducto = 2 AND p.state = 1  AND c.state = 1      
+        ";  
+        return $this->db->query($query)->result();
     }
-
-    
 }

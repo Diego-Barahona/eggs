@@ -99,13 +99,20 @@ const tablaGastos = $('#list_gastos').DataTable({
 	language: {
 		url: "//cdn.datatables.net/plug-ins/1.10.20/i18n/Spanish.json",
 	},
+    "columnDefs": [
+		{
+            className: "text-center", "targets": [3] ,
+        },
+        {
+            className: "text-center", "targets": [4] ,
+        },
+    ],
 	columns: [
 		{ data: "idGastoGeneral" },
         { data: "nomGastoGeneral" },
-        { data: "costoMonetarioGeneral" },
-       
-        
-
+        { "render": function (data, type, row){     
+			return totalFormat(row.costoMonetarioGeneral)
+	   	}},
 		{
             defaultContent: `<button type='button' name='btn_update' class='btn btn-primary'>
                                   Editar
@@ -346,4 +353,15 @@ close_modal_gastos = () =>{
     $("#frm_costoMonetarioGeneral > input").removeClass("is-invalid");
    
     $('#modal_gastos').modal('hide');
+}
+
+
+/* Función que devuelve el total de la compra de un cliente en formato CLP*/
+totalFormat = (total) => {
+    const formatterPeso = new Intl.NumberFormat('es-CO', {
+        style: 'currency',
+        currency: 'COP',
+        minimumFractionDigits: 0
+      })
+    return formatterPeso.format(total);
 }

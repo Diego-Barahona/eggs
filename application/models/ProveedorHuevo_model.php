@@ -7,11 +7,12 @@ class ProveedorHuevo_model extends CI_Model {
     }
 
     public function get_proveedorHuevo(){
-        $this->db->select('p.id,p.nombre,p.codProducto');
-        $this->db->from('proveedor p');
-        $this->db->where('p.codProducto = 1');
-        return $query = $this->db->get()->result();
+        $query = "SELECT p.nombre proveedor, h.name tipoHuevo, hp.precioVenta precio
+        FROM proveedor p
+        LEFT JOIN huevo_proveedor hp ON p.id = hp.proveedorId
+        LEFT JOIN huevo h ON hp.huevoId = h.id
+        WHERE p.codProducto = 1 AND p.state = 1  AND h.state = 1      
+        ";  
+        return $this->db->query($query)->result();
     }
-
-    
 }

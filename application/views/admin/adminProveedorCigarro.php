@@ -34,72 +34,69 @@
           <table class="table table-bordered" id="list_proveedorCigarro" width="100%" cellspacing="0">
             <thead>
               <tr>
-                <th>id</th>
                 <th>Nombre Proveedor</th>
-                <th>CigarroID</th>
-            
-                
-                
+                <th>Cigarro</th>
+                <th>Precio unidad (Cartón)</th>
+                <th>Editar</th>
               </tr>
             </thead>
           </table>
         </div>
       </div>
     </div>
-    <div class="row mb-3"></div>
-    <div>
-    <!-- Modal Agregar precio -->
-    <div class="modal fade" data-backdrop="static" data-keyboard="false" id="modal_proveedorCigarro" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="titulo">Agregar Precio</h5>
-                    <button type="button" class="close" onclick="close_modal_proveedorCigarro()" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                <form>
-                    <div class="form-group" id="frm_id">
-                        <label>id</label>
-                        <input type="number" class="form-control" id="id" name="id" readonly>
-                        <div class="invalid-feedback"></div>
-                    </div>
-                    <!-- <div class="form-group" id="frm_nomProveedor" > 
-                        <label>nom</label> 
-                        <input type="password" class="form-control"  id="passwd" name="passwd" placeholder="Ingrese contraseña">
-                        <div class="invalid-feedback"></div>
-                    </div>
-                    <div class="form-group" id="frm_full_name">
-                        <label>Nombre Completo</label>
-                        <input type="text" class="form-control" id="full_name" name="full_name" placeholder="Ingrese nombre">
-                        <div class="invalid-feedback"></div>
-                    </div>
-                    <div class="form-group" id="frm_email"> 
-                        <label>Correo electrónico</label> 
-                        <input type="email" class="form-control"  id="email" name="email" placeholder="Ingrese correo electrónico" >
-                        <div class="invalid-feedback"></div>
-                    </div>                 
-                    <div class="form-group" id="frm_range">
-                        <label>Nivel de usuario</label>
-                        <select class="form-select form-control" id="range" name="range" >
-                            <option></option>
-                        </select>
-                        <div class="invalid-feedback"></div>
-                    </div>
-                    <div class="form-group" id="frm_state" style="display: none">
-                        <label>Estado</label>
-                        <input type="text" class="form-control" id="state" name="state" readonly>
-                    </div> -->
-                    <div class="form-group float-right">
-                        <button onclick="close_modal_proveedorCigarro()" type="button" class="btn btn-secondary btn-danger">Cerrar</button>
-                        <button id="btn_ok" type="button" class="btn btn-primary btn-success">Agregar Precio</button>
-                    </div>
-                </form>
-                </div>
+  </div>
+</div>   
+
+<!-- Modal Agregar precio -->
+<div class="modal fade" data-backdrop="static" data-keyboard="false" id="modal_proveedorCigarro" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="titulo">Agregar Precio</h5>
+                <button type="button" class="close" onclick="close_modal_proveedorCigarro()" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+              <form>
+                  <div class="form-group" id="frm_id">
+                      <label>id</label>
+                      <input type="number" class="form-control" id="id" name="id" readonly>
+                      <div class="invalid-feedback"></div>
+                  </div>
+                  <!-- <div class="form-group" id="frm_nomProveedor" > 
+                      <label>nom</label> 
+                      <input type="password" class="form-control"  id="passwd" name="passwd" placeholder="Ingrese contraseña">
+                      <div class="invalid-feedback"></div>
+                  </div>
+                  <div class="form-group" id="frm_full_name">
+                      <label>Nombre Completo</label>
+                      <input type="text" class="form-control" id="full_name" name="full_name" placeholder="Ingrese nombre">
+                      <div class="invalid-feedback"></div>
+                  </div>
+                  <div class="form-group" id="frm_email"> 
+                      <label>Correo electrónico</label> 
+                      <input type="email" class="form-control"  id="email" name="email" placeholder="Ingrese correo electrónico" >
+                      <div class="invalid-feedback"></div>
+                  </div>                 
+                  <div class="form-group" id="frm_range">
+                      <label>Nivel de usuario</label>
+                      <select class="form-select form-control" id="range" name="range" >
+                          <option></option>
+                      </select>
+                      <div class="invalid-feedback"></div>
+                  </div>
+                  <div class="form-group" id="frm_state" style="display: none">
+                      <label>Estado</label>
+                      <input type="text" class="form-control" id="state" name="state" readonly>
+                  </div> -->
+                  <div class="form-group float-right">
+                      <button onclick="close_modal_proveedorCigarro()" type="button" class="btn btn-secondary btn-danger">Cerrar</button>
+                      <button id="btn_ok" type="button" class="btn btn-primary btn-success">Agregar Precio</button>
+                  </div>
+              </form>
             </div>
         </div>
-    </div>
     </div>
 </div>
 <script src="<?php echo base_url(); ?>assets/js_admin/proveedorCigarro.js"></script>
