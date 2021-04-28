@@ -43,12 +43,20 @@ const tablaProveedorCigarro = $('#list_proveedorCigarro').DataTable({
 	language: {
 		url: "//cdn.datatables.net/plug-ins/1.10.20/i18n/Spanish.json",
 	},
+	"columnDefs": [
+        {
+            className: "text-center", "targets": [3] ,
+        },
+    ],
 	columns: [
-		{ data: "id" },
-        { data: "nombre" },
-        { data: "codProducto" },
-      
-       
-        	
+        { data: "proveedor" },
+        { data: "cigarro" },
+		{ data: "precio" },   	
+		{
+            defaultContent: `<button type='button' name='btn_update' class='btn btn-primary'>
+                                  Editar
+                                  <i class="fas fa-edit"></i>
+                              </button>`,
+		},
 	],
 });

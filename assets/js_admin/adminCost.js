@@ -35,12 +35,21 @@ const tabla = $("#table-cost").DataTable({
 	language: {
 		url: "//cdn.datatables.net/plug-ins/1.10.20/i18n/Spanish.json",
 	},
+	"columnDefs": [
+		{
+            className: "text-center", "targets": [4] ,
+        },
+        {
+            className: "text-center", "targets": [5] ,
+        },
+    ],
 	columns: [
         { data: "id" },
 		{ data: "nombre_proveedor" },
         { data: "fecha" },
-        { data: "costo_total" },
-
+		{ "render": function (data, type, row){            
+			return totalFormat(row.costo_total)
+	   	}},
 		{
 			defaultContent: `<button type='button' name='editButton' class='btn btn-primary'>
                                   Editar
@@ -558,3 +567,12 @@ $("#dateCost").datepicker({
 	buttonImage: host_url + 'assets/img/about/calendario2.png',
 });
 
+/* Función que devuelve el total de la compra de un cliente en formato CLP*/
+totalFormat = (total) => {
+    const formatterPeso = new Intl.NumberFormat('es-CO', {
+        style: 'currency',
+        currency: 'COP',
+        minimumFractionDigits: 0
+      })
+    return formatterPeso.format(total);
+}

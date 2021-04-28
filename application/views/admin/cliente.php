@@ -48,66 +48,64 @@
         </div>
       </div>
     </div>
-    <div class="row mb-3"></div>
-    <div>
-    <!-- Modal Agregar y Editar Empresa -->
-    <div class="modal fade" data-backdrop="static" data-keyboard="false" id="modal_cliente" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="titulo">Crear cliente</h5>
-                    <button type="button" class="close" onclick="close_modal_cliente()" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
+  </div>
+</div>
+<!-- Modal Agregar y Editar Empresa -->
+<div class="modal fade" data-backdrop="static" data-keyboard="false" id="modal_cliente" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="titulo">Crear cliente</h5>
+              <button type="button" class="close" onclick="close_modal_cliente()" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <div class="modal-body">
+            <form>
+                <div class="form-group" id="frm_nomCliente">
+                    <label>Nombre Cliente</label>
+                    <input type="text" class="form-control" id="nomCliente" name="nomCliente" placeholder="Ingrese nombre Cliente">
+                    <div class="invalid-feedback"></div>
                 </div>
-                <div class="modal-body">
-                <form>
-                    <div class="form-group" id="frm_nomCliente">
-                        <label>Nombre Cliente</label>
-                        <input type="text" class="form-control" id="nomCliente" name="nomCliente" placeholder="Ingrese nombre Cliente">
-                        <div class="invalid-feedback"></div>
-                    </div>
-                    <div class="form-group" id="frm_rutCliente" > 
-                        <label>Rut Cliente</label> 
-                        <input type="text" class="form-control"  id="rutCliente" name="rutCliente" placeholder="Ingrese rutCliente">
-                        <div class="invalid-feedback"></div>
-                    </div>
-                    <div class="form-group" id="frm_sector">
-                        <label>Sector </label>
-                        <input type="text" class="form-control" id="sector" name="sector" placeholder="Ingrese sector">
-                        <div class="invalid-feedback"></div>
-                    </div>
-                    
-                   
-                    <div class="form-group" id="frm_nombreCalle"> 
-                        <label>Nombre Calle</label> 
-                        <input type="text" class="form-control"  id="nombreCalle" name="nombreCalle" placeholder="nombre de la calle" >
-                        <div class="invalid-feedback"></div>
-                    </div>  
-                    <div class="form-group" id="frm_numCalle"> 
-                        <label>Numero de calle </label> 
-                        <input type="text" class="form-control"  id="numCalle" name="numCalle" placeholder="Ingrese numero de casa" >
-                        <div class="invalid-feedback"></div>
-                    </div>    
-
-                     <div class="form-group" id="frm_state" style="display: none">
-                        <label>Estado</label>
-                        <input type="text" class="form-control" id="state" name="state" readonly>
-                    </div>
-
-
-                    <div class="form-group float-right">
-                        <button onclick="close_modal_cliente()" type="button" class="btn btn-secondary btn-danger">Cerrar</button>
-                        <button id="btn_ok" type="button" class="btn btn-primary btn-success">Crear cliente</button>
-                    </div>
-                </form>
+                <div class="form-group" id="frm_rutCliente" > 
+                    <label>Rut Cliente</label> 
+                    <input type="text" class="form-control"  id="rutCliente" name="rutCliente" placeholder="Ingrese rutCliente">
+                    <div class="invalid-feedback"></div>
                 </div>
-            </div>
-        </div>
-    </div>
+                <div class="form-group" id="frm_sector">
+                    <label>Sector </label>
+                    <input type="text" class="form-control" id="sector" name="sector" placeholder="Ingrese sector">
+                    <div class="invalid-feedback"></div>
+                </div>
+                
+                
+                <div class="form-group" id="frm_nombreCalle"> 
+                    <label>Nombre Calle</label> 
+                    <input type="text" class="form-control"  id="nombreCalle" name="nombreCalle" placeholder="nombre de la calle" >
+                    <div class="invalid-feedback"></div>
+                </div>  
+                <div class="form-group" id="frm_numCalle"> 
+                    <label>Numero de calle </label> 
+                    <input type="text" class="form-control"  id="numCalle" name="numCalle" placeholder="Ingrese numero de casa" >
+                    <div class="invalid-feedback"></div>
+                </div>    
+
+                  <div class="form-group" id="frm_state" style="display: none">
+                    <label>Estado</label>
+                    <input type="text" class="form-control" id="state" name="state" readonly>
+                </div>
+
+
+                <div class="form-group float-right">
+                    <button onclick="close_modal_cliente()" type="button" class="btn btn-secondary btn-danger">Cerrar</button>
+                    <button id="btn_ok" type="button" class="btn btn-primary btn-success">Crear cliente</button>
+                </div>
+            </form>
+          </div>
+      </div>
     </div>
 </div>
 
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.js"></script>
 <script src="<?php echo base_url(); ?>assets/js/rut.js"></script>
 <script src="<?php echo base_url(); ?>assets/js_admin/clientes.js"></script>
