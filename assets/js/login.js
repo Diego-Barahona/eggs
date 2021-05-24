@@ -65,14 +65,14 @@ login = () => {
 		crossOrigin: false,
 		dataType: "json",
 		success: () => {
-			swal({
-				title: "Éxito!",
+			/* swal({ */
+				/* title: "Éxito!",
 				icon: "success",
 				text: "Inicio de Sesión exitoso",
-				button: "OK"
-			}).then(() => {
+				button: "OK" */
+			/* }).then(() => { */
 				window.location.assign(host_url+"api/load_page");
-			});
+			/* }); */
 		},
 		statusCode: {
 			400: (xhr) => {

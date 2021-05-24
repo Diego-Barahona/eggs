@@ -78,8 +78,7 @@ $("#table-cost").on("click", "button", function () {
 		$("#dateCost_edit").val(data.fecha);
 		$("#proveedor_edit").val(data.proveedor);
 		$("#costEdit").modal("show");
-		getProductBySup(data.proveedor);
-		getCompras();
+		getCompras(data.proveedor);
 		idSelectCosto_edit= 1;
 	   
 	}
