@@ -24,13 +24,16 @@ $(() => {
    });
    let select_product_edit = [];
    let idSelectCosto_edit= 1;
+   let idProveedor = 0;
 
    
    
    
   
 
-   getCompras = () => {
+   getCompras = (idPRoveedor) => { 
+	idProveedor = idPRoveedor;
+	getProductBySup(idPRoveedor);
 	let id = $("#codeCost_edit").val();
 	let xhr = new XMLHttpRequest();
 	xhr.open("get", `${host_url}api/getBuys/${id}`);
@@ -41,7 +44,7 @@ $(() => {
             data = JSON.parse(compras);
             aux= data.insumos;
            
-		    rellenarCampos(aux);
+		    rellenarCampos(aux, idPRoveedor);
 		} else {
 			swal({
 				title: "Error",
@@ -54,20 +57,20 @@ $(() => {
 };
 
 
-rellenarCampos=(compras)=> { 
+rellenarCampos=(compras, idProveedor)=> { 
     
     
 	for (let i = 0; i < compras.length; i++) {
 		let currentCosto = compras[i];
         $(`#categoriaEdit_${idSelectCosto_edit}`).val(currentCosto.tipoProducto)
-        $(`#productoEdit_${idSelectCosto_edit}`).val(currentCosto.producto)
-
 		$(`#valorinsumosEdit_${idSelectCosto_edit}`).val(currentCosto.valor)
 		$(`#cantinsumosEdit_${idSelectCosto_edit}`).val(currentCosto.cantidad)
 		$(`#totalinsumosEdit_${idSelectCosto_edit}`).val(currentCosto.valor * currentCosto.cantidad)
+		$(`#productoEdit_${idSelectCosto_edit}`).val(currentCosto.producto)
 		if ((i+1) < compras.length) {
-			addRowCostosEdit();
+			addRowCostosEdit(idProveedor);
 		}
+	
         
 	}
 	total = 0;
@@ -111,28 +114,27 @@ rellenarCampos=(compras)=> {
 
 
    getProductBySup=(valor)=>{ // productos proveedor
+	console.log(valor);
+	console.log(select_product_edit);
 
-    select_product_edit= [];
-    let xhr = new XMLHttpRequest();
-    xhr.open("get", `${host_url}api/getProductSupplier/${valor}`);
-    xhr.responseType = "json";
-    xhr.addEventListener("load", () => {
-    if (xhr.status === 200) {
-        let data = xhr.response;
-        $("#productoEdit_1").find('option').remove();
-         select_product_edit=data;
-        
-         select_product_edit.map((p) => {
+	$.ajax({
+        type: "GET",
+        url: `${host_url}api/getProductSupplier/${valor}`,
+        dataType: "json",
+        success: (xhr) => {
+            let data = xhr;
+			
+        	$("#productoEdit_1").find('option').remove();
+         	select_product_edit=data;
+			 
+         	select_product_edit.map((p) => {
             $(`#productoEdit_1`).append(
                 `<option value=${p.id}>${p.name}</option>`
             );
-         
-         });
-
-        }
-  });
-   
-   xhr.send();
+         	});
+		}
+    }); 
+	console.log(select_product_edit); 
 }
 
 
@@ -142,9 +144,10 @@ rellenarCampos=(compras)=> {
 
 
    $("#proveedor_edit").change(function(){
-	  
+	select_product_edit = [];  
     $(`.rowCostoEdit`).remove();
     valor = $("#proveedor_edit").val();
+	idProveedor = valor;
     let xhr = new XMLHttpRequest();
     xhr.open("get", `${host_url}api/getProductSupplier/${valor}`);
     xhr.responseType = "json";
@@ -190,19 +193,33 @@ $("#productoEdit_1").change(function(){
 });
 
 
+let cont = 0;
+   loadSelectProductoEdit= (idProveedor) => {
+	console.log(cont+1);
+	console.log(idSelectCosto_edit);
+	$.ajax({
+		type: "GET",
+		url: `${host_url}api/getProductSupplier/${idProveedor}`,
+		dataType: "json",
+		async: false,
+		success: (xhr) => {
+			xhr.map((p) => {
+				console.log(idSelectCosto_edit);
+				$(`#productoEdit_${idSelectCosto_edit}`).append(
+					`<option value=${p.id}>${p.name}</option>`
+				);
+			});
+		
+		}
+	}); 
+  }
 
-   loadSelectProductoEdit= () => {
-    
-	select_product_edit.map((p) => {
-		$(`#productoEdit_${idSelectCosto_edit}`).append(
-			`<option value=${p.id}>${p.name}</option>`
-		);
-   }); }
 
 
-
-   addRowCostosEdit = () => {
+   addRowCostosEdit = (idProveedor) => {
+	console.log(idProveedor);
 	idSelectCosto_edit++;
+	console.log(idSelectCosto_edit);
 	$("#contCostoEdit").append(`<div class="row mb-3 rowCostoEdit" id="rowCostoEdit_${idSelectCosto_edit}">
 
 	                             <input type="hidden" class="form-control" id="categoriaEdit_${idSelectCosto_edit}">
@@ -228,7 +245,7 @@ $("#productoEdit_1").change(function(){
                                 </div>
                             </div>`);
 
-loadSelectProductoEdit();
+loadSelectProductoEdit(idProveedor);
 
 
 	
@@ -426,7 +443,7 @@ save_cost = () => {
 
 
 
-$("#tr_btn_add_Edit").on("click", addRowCostosEdit);
+$("#tr_btn_add_Edit").on("click", () => {addRowCostosEdit(idProveedor)});
 $("#btn_Edit_cost").on("click", save_cost);
    
    
