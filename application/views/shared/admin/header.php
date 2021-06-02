@@ -25,7 +25,7 @@
     <script>
     const host_url = "<?php echo base_url(); ?>";
   </script>
-
+<script src="https://www.gstatic.com/charts/loader.js"></script>
   <style type="text/css">
     .chargePage {
       display: none;
@@ -59,7 +59,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center pb-4" href="">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center pb-4" href="<?php echo base_url(); ?>adminCards">
 
             <img src="<?php echo base_url(); ?>assets/img/logos/side2.png" style="height:100px ;width:150px" >
 
@@ -71,7 +71,7 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link" href="">
+                <a class="nav-link" href="<?php echo base_url(); ?>adminCards">
                     <i class="fas fa-home"></i>
                     <span>Inicio</span></a>
                     <hr class="sidebar-divider">
@@ -170,7 +170,7 @@
 
             <!-- Nav Item - Charts -->
             <li class="nav-item">
-                <a class="nav-link" href="charts.html">
+                <a class="nav-link" href="<?php echo base_url(); ?>adminCharts">
                     <i class="fas fa-chart-bar"></i>
                     <span>Gráficos</span></a>
                     <hr class="sidebar-divider">
@@ -254,6 +254,7 @@
 
     <script src="<?php echo base_url(); ?>assets/vendor/jquery/jquery.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+   
 
     <!-- Core plugin JavaScript-->
     <script src="<?php echo base_url(); ?>assets/vendor/jquery-easing/jquery.easing.min.js"></script>

@@ -11,7 +11,7 @@ class CostModel extends CI_Model
     public function getCost()
     {
         $query = "SELECT 
-          c.costoGasto as costo_total , c.id , c.fecha ,c.proveedorId as proveedor , p.nombre as nombre_proveedor
+          c.costoGasto as costo_total , c.id , c.fecha ,c.proveedorId as proveedor , p.nombre as nombre_proveedor ,p.codProducto tipoProducto
          FROM costos c 
          JOIN proveedor p ON p.id =c.proveedorId";
         return $this->db->query($query)->result();
@@ -27,9 +27,6 @@ class CostModel extends CI_Model
          WHERE id = ?  ";
         return $this->db->query($query,array($code))->result();
     }
-
-
-
 
 
     public function getEggs()
@@ -71,9 +68,82 @@ class CostModel extends CI_Model
     //    $query2 = "INSERT INTO costos (idGasto, compra ,nombreGasto,costoGasto,fecha) VALUES (?,?, ?,?,?)";
       //  return $this->db->query($query2, $datos);
          
+}
+      public function  updateCost($data) { 
+
+
+        // tabla -compras ---> compras , cantidad , precio unitario , total 
+        //tabla -costo ---> codigo de factura ($id), total final compra , proveedor 
+       
+        $costo= array(
+     
+            'costoGasto'=> $data['total_costos'],
+            'compras'=> $data['compras'],
+            'fecha'=> $data['fecha'],
+            'proveedorId'=> $data['proveedor'] , 
+            'id'=> $data['codigo'], // cambiar cuando se implemente ! a dinamico
+        );
+
+        $query = "UPDATE costos SET costoGasto= ? , compras= ? , fecha = ? , proveedorId = ? WHERE id=?";
+        return $this->db->query($query, $costo);  
+    
 
 
     }
+
+     
+    public function  deleteProducts($tipoProveedorNuevo,$codigo) { 
+
+        if($tipoProveedorNuevo == 1){
+            
+            $query = "DELETE FROM compra_huevo WHERE costoId = ?";
+            return $this->db->query($query, $codigo);  
+
+        }else{
+            $query = "DELETE FROM compra_cigarro WHERE costoId = ?";
+            return $this->db->query($query, $codigo);  
+           
+        }
+       
+    }
+
+    public function insertCompra($data){
+    
+        $tipo=$data['tipoProducto'];
+       if($tipo == "2" ){
+      
+            $compra=array(
+                'cantidad'=> $data['cantidad'],
+                'precioCompra'=> $data['valor'],
+                'total'=> $data['total'],
+                'stockReal'=> 1000,
+                'costoId'=>  $data['codigo'] ,
+                'cigarroId'=>  $data['producto'], // cambiar cuando se implemente ! a dinamico
+                        );
+        
+            $query = "INSERT INTO compra_cigarro(cantidad,precioCompra,total,stockReal,costoId,cigarroId) VALUES (?,?,?,?,?,?)";
+            return $this->db->query($query, $compra);
+          
+         } else { 
+              
+             $compra=array(
+
+            'cantidad'=> $data['cantidad'],
+            'precioCompra'=> $data['valor'],
+            'total'=> $data['total'],                  
+            'stockReal'=> 1000,              
+            'costoId'=>  $data['codigo'] ,
+            'huevoId'=>  $data['producto'], 
+            );
+
+            $query = "INSERT INTO compra_huevo(cantidad,precioCompra,total,stockReal,costoId,huevoId) VALUES (?,?,?,?,?,?)";
+            return $this->db->query($query, $compra);
+        } 
+
+    }
+
+
+
 
 
 
