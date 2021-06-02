@@ -158,15 +158,42 @@
 
         
             <!-- Nav Item - Routes-->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="<?php echo base_url(); ?>adminRoutes">
+           <!--  <li class="nav-item">
+                <a class="nav-link collapsed" href="<?//php echo base_url(); ?>adminRoutes">
                 <i class="fas fa-map-signs"></i>
                     <span>Rutas</span>
                 </a>
+            </li> -->
+
+
+
+            <!-- Nav Item - Box -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#Routes"
+                    aria-expanded="true" aria-controls="collapseUtilities">
+                    <i class="fas fa-map-signs"></i>
+                    <span>Rutas</span>
+                </a>
+                <div id="Routes" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Gestión Ruta</h6>
+                        <a class="collapse-item" href="<?php echo base_url(); ?>adminRoutes">Planificación</a>
+                        <a class="collapse-item" href="<?php echo base_url(); ?>adminRoutes">Llenado</a>
+                    </div>
+                </div>
+                <hr class="sidebar-divider">
             </li>
 
-            <!-- Divider -->
-            <hr class="sidebar-divider">
+
+
+
+
+
+
+
+
+
 
             <!-- Nav Item - Charts -->
             <li class="nav-item">

@@ -66,7 +66,6 @@ class Routes extends CI_Controller {
 			$products= $this->RouteModel->getProducts();
 			$eggs = $this->RouteModel->getEggs();
 			$eggsHeader = $this->RouteModel->getEggsHeaders();
-			$cigars= $this->RouteModel->getCigars();
 			$clients = $this->RouteModel->getClients();
 			$this->response->sendJSONResponse(array($eggs, $clients, $eggsHeader));
 		} else {
@@ -122,6 +121,17 @@ class Routes extends CI_Controller {
 			$this->load->view('shared/admin/header');
 			$this->load->view('admin/detailsRoute' , $data);
 			$this->load->view('shared/admin/footer');
+		}else {
+			redirect('Home/login', 'refresh');
+		}
+	}
+
+	//Function to get data client to load datatable
+	public function getCigarsList()
+	{   
+		if ($this->accesscontrol->checkAuth()['correct']) {
+			$cigars= $this->RouteModel->getCigars();
+			$this->response->sendJSONResponse($cigars);
 		}else {
 			redirect('Home/login', 'refresh');
 		}

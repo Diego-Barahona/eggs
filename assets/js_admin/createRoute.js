@@ -22,6 +22,7 @@ idEdit = '';
 idEggEdit = '';
 idClientEdit = '';
 cantidadInput = '';
+idEditClientCigar = '';
 
 
 $("#price").change(() =>{ 
@@ -59,6 +60,7 @@ getDataForm = () => {
         url: host_url + "api/routes/getDataForm",
         dataType: "json",
         success: (xhr) => {
+            tabla.clear();
             /*Almacenar la información de los huevos*/
             xhr[0].forEach((item)=>{
                 eggsData.push(item);
@@ -86,6 +88,8 @@ getDataForm = () => {
                 }
                 dataTable.push(row);
             });
+			tabla.rows.add(dataTable);
+			tabla.draw();
 
             /* Definicion de Datatable */
             let columns = [];
@@ -482,3 +486,183 @@ totalFormat = (total) => {
 
 $("#createRoute").on("click", createRoute);
 $("#createEgg").on("click", createEgg);
+
+
+/* Admin Cigars */
+
+let stockCigarros = [];
+let cigarsByUser = [];
+let cigars = []; 
+
+/*Constante para rellenar las filas de la tabla: lista de rutas*/
+const tabla = $('#listRouteCigars').DataTable({
+	// searching: true,
+	language: {
+		url: "//cdn.datatables.net/plug-ins/1.10.20/i18n/Spanish.json",
+	},
+    "columnDefs": [
+        {
+            className: "text-center", "targets": [4] ,
+        },
+        {
+            className: "text-center", "targets": [5] ,
+        }
+    ],
+	columns: [
+		{ data: "id" },
+        { data: "nombre" },
+        { data: "sector" },
+        { data: "direccion" },
+        { defaultContent: "total", "render": 
+            function (data, type, row){
+                return `<input type="text" value="$ 0" id="total_cigar_list_${row.id}" disabled class="form-control">`
+            }
+        },
+        {
+            defaultContent: `<button type='button' name='btn_add_cigars' class='btn btn-info'>
+                                  Agregar
+                                  <i class="fas fa-plus"></i>
+                              </button>`,
+		},
+	],
+});
+
+/*Constante para rellenar las filas de la tabla: lista de rutas*/
+const tablaCigarros = $('#listCigars').DataTable({
+	// searching: true,
+	language: {
+		url: "//cdn.datatables.net/plug-ins/1.10.20/i18n/Spanish.json",
+	},
+    "columnDefs": [
+        {
+            className: "text-center", "targets": [2] ,
+        },
+        {
+            className: "text-center", "targets": [3] ,
+        }
+    ],
+	columns: [
+		{ data: "id" },
+        { data: "nombre" },
+        { data: "precio" }, 
+        { data: "stock" }, 
+        { defaultContent: "cantidad", "render": 
+            function (data, type, row){
+                return `<input type="number" min="0" class="form-control" id="cantidad_${row.id}" placeholder="Ingrese cantidad">`
+            }
+        },
+        { defaultContent: "total", "render": 
+            function (data, type, row){
+                return `<input type="text" value="$ 0" id="total_cigar_${row.id}" disabled class="form-control">`
+            }
+        },
+	],
+});
+
+
+$('#listRouteCigars').on("click", "button", function () {
+    let data = tabla.row($(this).parents("tr")).data();
+    if ($(this)[0].name == "btn_add_cigars") {
+        idEditClientCigar = data.id;
+        getCigars();
+        $("#modal_cigars").modal("show");
+    }
+});
+
+/*Función para discriminar en mostrar la información para editar o des/hab un nuevo usuario*/
+$('#listCigars').on("change", "input", function () {
+    let data = tablaCigarros.row($(this).parents("tr")).data();
+    let cantidad = parseFloat($('#cantidad_'+data.id).val());
+    let stock = parseFloat(data.stock);
+
+    if(cantidad > stock){
+        swal({
+            title: "Error",
+            icon: "error",
+            text: 'No queda suficiente Stock del producto.\n'+
+            'Cantidad disponible: '+cantidad+'un.\n'+
+            'Cantidad definida en la ruta: '+stock+'un.\n',
+        }).then(() => {
+            $('#cantidad_'+data.id).val('');
+            $("body").removeClass("loading");
+        });
+    }else{
+        let total = cantidad *  parseFloat(data.precio);
+        $('#total_cigar_'+data.id).val(totalFormat(total));
+        if(cantidad > 0){
+            row = {
+                idClient : idEditClientCigar,
+                idCigar : data.id,
+                name : data.nombre,
+                precio: data.precio,
+                stock: data.stock,
+                cantidad: cantidad,
+                total: total
+            }
+            cigars.push(row);
+        }
+    }
+});
+
+/*funcion para traer la lista de los cigarros y cargarla en la tabla*/
+getCigars = () => {
+    $.ajax({
+        type: "GET",
+        url: "api/routes/getCigars",
+        crossOrigin: false,
+        dataType: "json",
+        success: (result) => {
+            tablaCigarros.clear();
+            if(stockCigarros.length == 0){
+                result.forEach((item)=>{
+                    row = 
+                    {
+                        id: item.id,
+                        stock : item.stock,
+                    }
+                    stockCigarros.push(row);
+                });
+                console.log(stockCigarros);
+                tablaCigarros.rows.add(result);
+                tablaCigarros.draw();
+            }else{
+                tablaCigarros.rows.add(result);
+                tablaCigarros.draw();
+            }
+        },
+        error: () => {
+            swal({
+                title: "Error",
+                icon: "error",
+                text: "No se pudo encontrar el recurso",
+            }).then(() => {
+                $("body").removeClass("loading");
+            });
+        },
+    });
+}
+
+/* Función para cerrar modal seteando en null las variables dinamicas*/
+close_modal_add_cigar = () =>{
+    idEditClientCigar = '';
+    tablaCigarros.clear();
+    eggs = []; 
+    $('#modal_cigars').modal('hide');
+}
+
+addCigar = () =>{
+    /* Actualizar el stock */
+    total = 0;
+    cigars.forEach((cigar)=>{
+        stockCigarros.forEach((stockCigarros)=>{
+            if(cigar.idCigar == stockCigarros.id){
+                stockCigarros.stock = stockCigarros.stock - cigar.cantidad;
+            }
+        });
+        total = total + cigar.total;
+    });
+    $('#total_cigar_list_1').val(totalFormat(total));
+    $('#modal_cigars').modal('hide');
+}
+
+$("#btn_add_cigar").on("click", addCigar);
