@@ -51,8 +51,9 @@ class RouteModel extends CI_Model
     }
 
     public function getCigars(){
-        $query = "SELECT c.id, c.nombre, c.precio
-            FROM cigarros c";
+        $query = "SELECT c.id, c.nombre, c.precio, c.stock
+            FROM cigarros c
+            WHERE c.state = 1";
         return $this->db->query($query)->result();
     }
 

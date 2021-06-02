@@ -152,6 +152,7 @@ $route['api/routes/createRoute']['POST'] = 'Routes/create';
 $route['api/routes/detailsRoute']['POST'] = 'Routes/details';
 $route['api/routes/updateRoute']['POST'] = 'Routes/update';
 $route['api/routes/deleteRoute']['GET'] = 'Routes/delete/$1';
+$route['api/routes/getCigars']['GET'] = 'Routes/getCigarsList/';
 
 /* Admin cards */
 $route['adminCards']['GET']= 'Cards/cardsAdmin';
