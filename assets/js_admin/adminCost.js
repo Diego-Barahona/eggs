@@ -23,6 +23,7 @@ $("#name_cost").change(() => {
 });
 let select_product = [];
 let idSelectCosto= 1;
+let tipoProveedor = 0;
 let edit = false;
 var idEdit = 0;
 let currentName= "_[[][ÑLLKLHHGHJKUUHYT%&%%$%//&%%$%%$$#"
@@ -80,6 +81,8 @@ $("#table-cost").on("click", "button", function () {
 		$("#costEdit").modal("show");
 		getCompras(data.proveedor);
 		idSelectCosto_edit= 1;
+		console.log(data.tipoProducto);
+		tipoProveedor=data.tipoProducto;
 	   
 	}
 });
@@ -182,6 +185,7 @@ getSupplier = () => {
     });
 
 showBuys = (code) => {
+	console.log(code);
 	let xhr = new XMLHttpRequest();
 	xhr.open("get", `${host_url}/api/getBuys/${code}`);
 	xhr.responseType = "json";

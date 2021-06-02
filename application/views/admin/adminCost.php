@@ -101,7 +101,7 @@
                                <input type="hidden" class="form-control" id="categoria_1" >
                                 <div class="col-md-3">
                                 <label for="activities">Producto</label>
-                                <select class="custom-select d-block w-100" name="select" id='producto_1'>
+                                <select class="custom-select d-block w-100 producto" name="select" id='producto_1'>
                                       
                                     </select>
                                 </div>
@@ -145,9 +145,6 @@
             <button type="button" id="btn_register_cost" class="btn btn-primary">Guardar</button>
            </div>
       
-     
-  
-    
       </div>
     </div>
   </div>

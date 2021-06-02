@@ -153,3 +153,22 @@ $route['api/routes/detailsRoute']['POST'] = 'Routes/details';
 $route['api/routes/updateRoute']['POST'] = 'Routes/update';
 $route['api/routes/deleteRoute']['GET'] = 'Routes/delete/$1';
 
+/* Admin cards */
+$route['adminCards']['GET']= 'Cards/cardsAdmin';
+$route['api/cards']['GET'] = 'Cards/getDataCards';
+
+///// graphics view 
+$route['adminCharts']['GET']= 'Graphics/adminCharts';
+$route['charts/general']['GET']= 'Graphics/chartGeneral';
+$route['charts/utils']['GET']= 'Graphics/chartUtils';
+$route['charts/sale']['GET']= 'Graphics/chartSale';
+$route['charts/buys']['GET']= 'Graphics/chartBuys';
+$route['charts/expensive']['GET']= 'Graphics/chartExpensive';
+$route['charts/credit']['GET']= 'Graphics/chartCredit';
+$route['charts/stock']['GET']= 'Graphics/chartStock';
+
+///// graphics api
+$route['api/chart/utils']['POST']= 'Graphics/getUtilsByPeriod';
+$route['api/chart/sale']['GET']= 'Graphics/getUtilsByPeriod';
+$route['api/chart/credit']['GET']= 'Graphics/getUtilsByPeriod';
+

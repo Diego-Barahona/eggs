@@ -353,9 +353,8 @@ save_cost = () => {
 	
 	} 
 
-	if(counterError === 0){   // if que comprueba si algun tipo de producto se repite 
-        console.log(eggsProduct);
-        console.log(cigarProduct);
+	if(counterError === 0){   
+      
 		result = _.sortBy(eggsProduct);
 		result2 = _.sortBy(cigarProduct);
 		for (let i = 0; i < result.length; i++) {
@@ -369,7 +368,6 @@ save_cost = () => {
 			}
 		  }
    
-
     if(repeat_eggs == false && repeat_cigar == false ){ // si no se repite nada avanza al registro de compras
 	
 		//enviar(0,insumosArray);
@@ -381,17 +379,19 @@ save_cost = () => {
 	};
 
 	
-
-	
 	let data = {
         productos: JSON.stringify(insumosArray),
 		compras: JSON.stringify(buys),
 		proveedor: $("#proveedor_edit").val(),
 		codigo: $(`#codeCost_edit`).val(),
+		tipoProveedor: tipoProveedor,
+		tipoProveedorNuevo: $("#categoriaEdit_1").val(),
 		total_costos: $("#costoTotal_Edit").val(),
 		fecha: $("#dateCost_edit").val(),
 	};
-    console.log(data);
+
+    console.log(data.compras);
+
     $.ajax({
 		data: {
 			data 

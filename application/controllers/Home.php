@@ -31,7 +31,7 @@ class Home extends CI_Controller {
 	public function load_page_role($path)
 	{
 		$this->load->view('shared/'.$path.'/header');
-		$this->load->view('shared/'.$path.'/index');
+		$this->load->view(''.$path.'/cards');
 		$this->load->view('shared/'.$path.'/footer');
 	}
 }

@@ -60,6 +60,34 @@ class Buy extends CI_Controller {
 
     }
 
+    public function getUtilsByPeriod(){ 
+        
+        if ($this->accesscontrol->checkAuth()['correct']) {
+            $data = $this->input->post('data');
+            $ok = true;
+            if ($ok) {
+            
+                $this->load->model('BuyModel');
+
+
+                
+               $res=$this->BuyModel->insertBuy($data);//guardar en tabla de costos 
+                if($res){
+                    $this->response->sendJSONResponse(array('msg' => "Compra registrada.")); 
+                }else{
+                    $this->response->sendJSONResponse(array('msg' => "Error, se repite la compra." ), 400);
+                }
+               
+            } else {
+                $this->response->sendJSONResponse(array('msg' => "Complete los campos del formulario." ,'err'=> $err), 400);
+            }
+        } else {
+            $this->response->sendJSONResponse(array('msg' => 'Permisos insuficientes'), 400);
+        }
+
+    }
+
+
 
 
 
