@@ -21,11 +21,33 @@ class Routes extends CI_Controller {
         }
 	}
 
+	//Function to load routes index view
+    public function indexSeller()
+	{
+		if ($this->accesscontrol->checkAuth()['correct']) {
+			$this->load->view('shared/seller/header');
+			$this->load->view('seller/adminRoute');
+			$this->load->view('shared/seller/footer');
+        } else {
+			redirect('Home/login', 'refresh');
+        }
+	}
+
 	//Function to load list route
 	public function list()
 	{
 		if ($this->accesscontrol->checkAuth()['correct']) {
 			$routes = $this->RouteModel->getRoutes();
+			$this->response->sendJSONResponse($routes);
+        } else {
+			redirect('Home/login', 'refresh');
+        }
+	}
+
+	public function listBySeller()
+	{
+		if ($this->accesscontrol->checkAuth()['correct']) {
+			$routes = $this->RouteModel->getRoutesBySeller();
 			$this->response->sendJSONResponse($routes);
         } else {
 			redirect('Home/login', 'refresh');
@@ -83,8 +105,9 @@ class Routes extends CI_Controller {
 			$route = $this->RouteModel->getRouteById($id);
 			$eggsClient = $this->RouteModel->getEggs();
 			$eggsStock = $this->RouteModel->getEggsHeaders();
+			$debts = $this->RouteModel->getDebts();
 			$eggsHeaderRoute = $this->getEggsHeadersByRoute($route['detalle']);
-			$this->response->sendJSONResponse(array($eggsClient, $route, $eggsHeaderRoute, $eggsStock));
+			$this->response->sendJSONResponse(array($eggsClient, $route, $eggsHeaderRoute, $eggsStock, $debts));
 		} else {
 			redirect('Home/login', 'refresh');
 		}
@@ -121,6 +144,22 @@ class Routes extends CI_Controller {
 			$this->load->view('shared/admin/header');
 			$this->load->view('admin/detailsRoute' , $data);
 			$this->load->view('shared/admin/footer');
+		}else {
+			redirect('Home/login', 'refresh');
+		}
+	}
+
+	//Function to get data client to load datatable
+	public function adminComplete()
+	{   
+		if ($this->accesscontrol->checkAuth()['correct']) {
+			$url = parse_url($_SERVER['REQUEST_URI']);
+			parse_str($url['query'], $params);
+			$id = $params['id'];
+			$data = $this->RouteModel->getRouteById($id);
+			$this->load->view('shared/seller/header');
+			$this->load->view('seller/completeRoute');
+			$this->load->view('shared/seller/footer');
 		}else {
 			redirect('Home/login', 'refresh');
 		}

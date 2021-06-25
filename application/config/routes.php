@@ -199,3 +199,10 @@ $route['api/eggs/create_precio']['POST']= 'ProveedorHuevo/addPrecio';
 
 
 
+
+/* Routes Profile Seller */
+
+/* Admin Route */
+$route['adminRoutesSeller']['GET']= 'Routes/indexSeller';
+$route['api/routes/getRoutesBySeller']['GET']= 'Routes/listBySeller';
+$route['adminCompleteRoute']['GET'] = 'Routes/adminComplete/$1';

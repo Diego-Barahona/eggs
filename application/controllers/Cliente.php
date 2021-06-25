@@ -10,11 +10,18 @@ class Cliente extends CI_Controller {
 		
 	}
 
-public function index()	{
+	public function index()	{
 		if ($this->accesscontrol->checkAuth()['correct']) {
-			$this->load->view('shared/admin/header');
+			$user= $_SESSION['rango'];
+			$path ='';
+			if($user == '2'){
+				$path ='seller';
+			}else if($user == '1'){
+				$path ='admin';
+			}
+			$this->load->view('shared/'.$path.'/header');
 			$this->load->view('admin/cliente');
-			$this->load->view('shared/admin/footer');
+			$this->load->view('shared/'.$path.'/footer');
         } else {
 			redirect('Home/login', 'refresh');
         }
