@@ -26,8 +26,8 @@
     <div class="card mb-3">
       <div class="card-header">
         <i class="fas fa-table"></i>
-        Lista de usuarios 
-        <button class="btn btn-success float-right" type='button' data-toggle="modal" id="btn" data-target="#modal_proveedorHuevo"><i class="fas fa-plus"></i> Agregar Precio</button>
+        Lista de precios ( proveedor - huevo)
+        <button class="btn btn-success float-right" type='button' data-toggle="modal" id="btn_modal" ><i class="fas fa-plus"></i> Agregar Precio</button>
       </div>
       <div class="card-body">
         <div class="table-responsive">
@@ -59,37 +59,26 @@
             </div>
             <div class="modal-body">
               <form>
-                  <div class="form-group" id="frm_id">
-                      <label>id</label>
-                      <input type="number" class="form-control" id="id" name="id" readonly>
-                      <div class="invalid-feedback"></div>
-                  </div>
-                  <!-- <div class="form-group" id="frm_nomProveedor" > 
-                      <label>nom</label> 
-                      <input type="password" class="form-control"  id="passwd" name="passwd" placeholder="Ingrese contraseña">
-                      <div class="invalid-feedback"></div>
-                  </div>
-                  <div class="form-group" id="frm_full_name">
-                      <label>Nombre Completo</label>
-                      <input type="text" class="form-control" id="full_name" name="full_name" placeholder="Ingrese nombre">
-                      <div class="invalid-feedback"></div>
-                  </div>
-                  <div class="form-group" id="frm_email"> 
-                      <label>Correo electrónico</label> 
-                      <input type="email" class="form-control"  id="email" name="email" placeholder="Ingrese correo electrónico" >
-                      <div class="invalid-feedback"></div>
-                  </div>                 
-                  <div class="form-group" id="frm_range">
-                      <label>Nivel de usuario</label>
-                      <select class="form-select form-control" id="range" name="range" >
+              <div class="form-group" id="frm_range">
+                      <label>Ingrese proveedor</label>
+                      <select class="form-select form-control" id="proveedor" name="proveedor" >
                           <option></option>
                       </select>
                       <div class="invalid-feedback"></div>
                   </div>
-                  <div class="form-group" id="frm_state" style="display: none">
-                      <label>Estado</label>
-                      <input type="text" class="form-control" id="state" name="state" readonly>
-                  </div> -->
+                 
+                  <div class="form-group" id="frm_range">
+                      <label>Ingrese producto</label>
+                      <select class="form-select form-control" id="producto" name="producto">
+                          <option></option>
+                      </select>
+                      <div class="invalid-feedback"></div>
+                  </div>
+
+                  <div class="form-group" id="frm_precio" >
+                      <label>Ingrese precio</label>
+                      <input type="text" class="form-control" id="precio" name="precio" placeholder="Ingrese precio">
+                  </div> 
                   <div class="form-group float-right">
                       <button onclick="close_modal_proveedorHuevo()" type="button" class="btn btn-secondary btn-danger">Cerrar</button>
                       <button id="btn_ok" type="button" class="btn btn-primary btn-success">Agregar Precio</button>

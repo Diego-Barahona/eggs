@@ -37,15 +37,39 @@ class BuyModel extends CI_Model
                 'stockReal'=> $stock_actual,
                 'costoId'=>  $data['codigo'] ,
                 'cigarroId'=>  $data['producto'], // cambiar cuando se implemente ! a dinamico
-                        );
-        
+            );
 
 
-                                                //sumar a stock de cigarro
-    
+            $query_stock = "SELECT COUNT(*) as contador FROM stock_cigarro WHERE codTipoProducto IN (?)";
+            $count_row =  $this->db->query( $query_stock,array($idProducto))->row_array();
+
+            if($count_row['contador'] == 0){
+
+                $row = array( 'precioCompra'=> $data['valor'], 'cantidad'=> $data['cantidad'],'codTipoProducto'=>  $data['producto']);
+
+                $save_stock = "INSERT INTO stock_cigarro(precioCompra,cantidad,codTipoProducto) VALUES (?,?,?)";
+                $this->db->query($save_stock, $row);
+
+               
+            }else { 
+
+                $query_cant= "SELECT cantidad FROM stock_cigarro WHERE codTipoProducto IN (?)";
+                $cant_old = $this->db->query($query_cant, $idProducto)->row_array();
+
+                $new_stock = ($cant_old['cantidad'] + $data['cantidad']);
+
+                                                                                                                                                       
+                $row = array( 'cantidad'=> $new_stock , 'codTipoProducto'=>  $data['producto'] );
+
+                $save_stock = "UPDATE stock_cigarro SET cantidad=? WHERE codTipoProducto = ?";
+                $this->db->query($save_stock, $row);
+
+            }
+
             $query = "INSERT INTO compra_cigarro(cantidad,precioCompra,total,stockReal,costoId,cigarroId) VALUES (?,?,?,?,?,?)";
             return $this->db->query($query, $compra);
-          
+
+           
          } else { 
             
         
@@ -68,6 +92,33 @@ class BuyModel extends CI_Model
             'huevoId'=>  $data['producto'], 
             );
 
+
+            
+            $query_stock = "SELECT COUNT(*) as contador FROM stock_huevo WHERE codTipoProducto IN (?)";
+            $count_row =  $this->db->query( $query_stock,array($idProducto))->row_array();
+
+            if($count_row['contador'] == 0){
+
+                $row = array( 'precioCompra'=> $data['valor'], 'cantidad'=> $data['cantidad'],'codTipoProducto'=>  $data['producto']);
+
+                $save_stock = "INSERT INTO stock_huevo(precioCompra,cantidad,codTipoProducto) VALUES (?,?,?)";
+                $this->db->query($save_stock, $row);
+
+               
+            }else { 
+
+                $query_cant= "SELECT cantidad FROM stock_huevo WHERE codTipoProducto IN (?)";
+                $cant_old = $this->db->query($query_cant, $idProducto)->row_array();
+
+                $new_stock = ($cant_old['cantidad'] + $data['cantidad']);
+                                                                                                                                                                   
+                $row = array( 'cantidad'=> $new_stock , 'codTipoProducto'=>  $data['producto'] );
+
+                $save_stock = "UPDATE stock_huevo SET cantidad=? WHERE codTipoProducto = ?";
+                $this->db->query($save_stock, $row);
+
+            }
+
             $query = "INSERT INTO compra_huevo(cantidad,precioCompra,total,stockReal,costoId,huevoId) VALUES (?,?,?,?,?,?)";
             return $this->db->query($query, $compra);
         } 
@@ -79,9 +130,6 @@ class BuyModel extends CI_Model
     } */
 
     }
-
-
-
 
 
     public function getProductSupplier($id)
@@ -106,9 +154,7 @@ class BuyModel extends CI_Model
             WHERE p.id=? AND c.state=?" ;
             return $this->db->query($cigars,array($id,true))->result();
         }
-
-
-    }
+    } 
 
     public function getSupplier()
     {

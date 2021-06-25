@@ -34,9 +34,11 @@
           <table class="table table-bordered" id="list_gastos" width="100%" cellspacing="0">
             <thead>
               <tr>
-                <th>idGasto</th>
-                <th>nombre Gasto</th>
-                <th>Costo Monetario $</th>
+             
+                <th>Código</th>
+                <th>Nombre</th>
+                <th>Fecha</th>
+                <th>Costo </th>
                 <th>Editar</th>
                 <th>Eliminar</th>
                 </tr>
@@ -60,14 +62,25 @@
           </div>
           <div class="modal-body">
             <form>
+               
                 <div class="form-group" id="frm_nomGastoGeneral">
-                    <label>Nombre del Gasto</label>
-                    <input type="text" class="form-control" id="nomGastoGeneral" name="nomGastoGeneral" placeholder="Ingrese nombre del Gasto">
+                    <label>Nombre del gasto</label>
+                    <input type="text" class="form-control" id="nomGastoGeneral" name="nomGastoGeneral" placeholder="Ingrese nombre ">
+                    <div class="invalid-feedback"></div>
+                </div>
+                <div class="form-group" id="frm_fechaGastoGeneral">
+                    <label>Fecha del gasto</label>
+                    <input type="text" class="form-control" id="fechaGastoGeneral" name="fechaGastoGeneral" placeholder="Ingrese fecha ">
                     <div class="invalid-feedback"></div>
                 </div>
                 <div class="form-group" id="frm_costoMonetarioGeneral" > 
-                    <label>Costo Monetario</label> 
-                    <input type="text" class="form-control"  id="costoMonetarioGeneral" name="CostoMonetarioGeneral" placeholder="Ingrese el costo en $">
+                    <label>Costo de gasto</label> 
+                    <input type="text" class="form-control"  id="costoMonetarioGeneral" name="CostoMonetarioGeneral" placeholder="Ingrese el costo ">
+                    <div class="invalid-feedback"></div>
+                </div>
+                <div class="form-group" id="frm_codGastoGeneral">
+                    <label>Código del gasto</label>
+                    <input type="text" class="form-control" id="codGastoGeneral" name="codGastoGeneral" placeholder="Ingrese código">
                     <div class="invalid-feedback"></div>
                 </div>
                 <div class="form-group float-right">
@@ -80,5 +93,17 @@
     </div>
 </div>
 
+
+
+<script>
+$("#fechaGastoGeneral").datepicker({
+	showOn: "button",
+	buttonText: "Calendario",
+	changeMonth: true,
+	changeYear: true,
+	dateFormat: 'yy-mm-dd',
+	buttonImage: host_url + 'assets/img/about/calendario2.png',
+});
+</script>
 
 <script src="<?php echo base_url(); ?>assets/js_admin/gastos.js"></script>

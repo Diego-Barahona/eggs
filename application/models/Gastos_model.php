@@ -16,14 +16,15 @@ class Gastos_model extends CI_Model {
     
 
     public function create($data){
-       
+
            
             $datos_gastos = array(
-                
                 'nomGastoGeneral' => $data['nomGastoGeneral'],
                 'costoMonetarioGeneral' => $data['costoMonetarioGeneral'],
-                
+                'fechaGasto'=> $data['fecha'],
+                'codigo'=> $data['codGastoGeneral'],
             );
+
             if($this->db->insert('gastosgenerales', $datos_gastos)){
                 return true;
             }else{
@@ -40,13 +41,16 @@ class Gastos_model extends CI_Model {
         if(sizeof($result->result()) >= 1){
             return false;
         }else{
+            
             $datos_gastos = array(
                 
                 'nomGastoGeneral' => $data['nomGastoGeneral'],
                 'costoMonetarioGeneral' => $data['costoMonetarioGeneral'],
-                
-               
+                'fechaGasto'=> $data['fecha'],
+                'codigo'=> $data['codGastoGeneral'],     
             );
+
+
             $this->db->where('idGastoGeneral', $data['idGastoGeneral']);
             if($this->db->update('gastosgenerales', $datos_gastos)){
                 return true;
