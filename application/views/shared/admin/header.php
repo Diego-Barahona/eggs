@@ -92,24 +92,24 @@
                 </a>
                 <hr class="sidebar-divider">
 
-<!-- Nav Item - Utilities Collapse Menu -->
-<li class="nav-item">
-   <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProveedor"
-       aria-expanded="true" aria-controls="collapseUtilities">
-       <i class="fas fa-shopping-cart"></i>
-       <span>Proveedores</span>
-   </a>
-   <div id="collapseProveedor" class="collapse" aria-labelledby="headingUtilities"
-       data-parent="#accordionSidebar">
-       <div class="bg-white py-2 collapse-inner rounded">
-           <h6 class="collapse-header">Gestión Proveedores</h6>
-           <a class="collapse-item" href="<?php echo base_url(); ?>adminProveedor"><i class="fas fa-user fa-fw"></i> Lista de Proveedores</a>
-           <a class="collapse-item" href="<?php echo base_url(); ?>adminProveedorHuevo"><i class="fas fa-egg fa-fw"></i> Proveedores-Huevos</a>  
-           <a class="collapse-item" href="<?php echo base_url(); ?>adminProveedorCigarro"><i class="fas fa-smoking fa-fw"></i> Proveedores-Cigarros</a>
-       </div>
-   </div>
-   <!-- <hr class="sidebar-divider"> -->
-</li>
+            <!-- Nav Item - Utilities Collapse Menu -->
+            <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProveedor"
+                aria-expanded="true" aria-controls="collapseUtilities">
+                <i class="fas fa-shopping-cart"></i>
+                <span>Proveedores</span>
+            </a>
+            <div id="collapseProveedor" class="collapse" aria-labelledby="headingUtilities"
+                data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">Gestión Proveedores</h6>
+                    <a class="collapse-item" href="<?php echo base_url(); ?>adminProveedor"><i class="fas fa-user fa-fw"></i> Lista de Proveedores</a>
+                    <a class="collapse-item" href="<?php echo base_url(); ?>adminProveedorHuevo"><i class="fas fa-egg fa-fw"></i> Proveedores-Huevos</a>  
+                    <a class="collapse-item" href="<?php echo base_url(); ?>adminProveedorCigarro"><i class="fas fa-smoking fa-fw"></i> Proveedores-Cigarros</a>
+                </div>
+            </div>
+            <!-- <hr class="sidebar-divider"> -->
+            </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider">
@@ -179,7 +179,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Gestión Ruta</h6>
                         <a class="collapse-item" href="<?php echo base_url(); ?>adminRoutes">Planificación</a>
-                        <a class="collapse-item" href="<?php echo base_url(); ?>adminRoutes">Llenado</a>
+                        <a class="collapse-item" href="<?php echo base_url(); ?>adminRoutes">Completar</a>
                     </div>
                 </div>
                 <hr class="sidebar-divider">

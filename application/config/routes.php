@@ -173,3 +173,10 @@ $route['api/chart/utils']['POST']= 'Graphics/getUtilsByPeriod';
 $route['api/chart/sale']['GET']= 'Graphics/getUtilsByPeriod';
 $route['api/chart/credit']['GET']= 'Graphics/getUtilsByPeriod';
 
+
+/* Routes Profile Seller */
+
+/* Admin Route */
+$route['adminRoutesSeller']['GET']= 'Routes/indexSeller';
+$route['api/routes/getRoutesBySeller']['GET']= 'Routes/listBySeller';
+$route['adminCompleteRoute']['GET'] = 'Routes/adminComplete/$1';

@@ -15,6 +15,15 @@ class RouteModel extends CI_Model
         return $this->db->query($query)->result();
     }
 
+    public function getRoutesBySeller(){
+        $user = $_SESSION['id'];
+        $query = "SELECT r.idRuta id, r.fechaRuta fecha, u.full_name vendedor, r.state estado
+            FROM rutas r
+            LEFT JOIN user u ON u.id = r.codVendedor
+            Where r.codVendedor = $user";
+        return $this->db->query($query)->result();
+    }
+
     public function getSellers(){
         $query = "SELECT u.id id, u.full_name name
             FROM user u
@@ -69,6 +78,7 @@ class RouteModel extends CI_Model
             'codVendedor' => $data['codVendedor'],
             'detalle' => json_encode($data['detalle']),
             'state' => 0,
+            'detalle_cigarros' => json_encode($data['detalleCigars']),
         );
         if($this->db->insert('rutas', $datos_route)){
             return true;
@@ -94,10 +104,16 @@ class RouteModel extends CI_Model
     }
 
     public function getRouteById($id){
-        $query = "SELECT r.idRuta id, r.fechaRuta fecha, r.detalle, r.codVendedor vendedor
+        $query = "SELECT r.idRuta id, r.fechaRuta fecha, r.detalle, r.detalle_cigarros, r.codVendedor vendedor
             FROM rutas r
             WHERE r.idRuta = $id";
         return $this->db->query($query)->row_array();
+    }
+
+    public function getDebts(){
+        $query = "SELECT idCliente idClient, deuda
+            FROM deuda d";
+        return $this->db->query($query)->result();
     }
 
     public function getEggsHeadersByRoute($id){

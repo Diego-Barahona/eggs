@@ -91,6 +91,34 @@
                 </div>
             </div>
         </div>
+        <div class="card">
+            <div class="card-header" id="cigarsTR">
+                <h5 class="mb-0">
+                <button class="btn btn-link" data-toggle="collapse" data-target="#routeEggs" aria-expanded="false" aria-controls="routeCigars">
+                    <i class="fas fa-table"></i>
+                    Cigarros
+                </button>
+                </h5>
+            </div>
+            <div id="routeCigars" class="collapse show" aria-labelledby="cigarsTR">
+                <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="listRouteCigars" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Nombre</th>
+                                <th>Sector</th>
+                                <th>Dirección</th>
+                                <th>Precio Total</th>
+                                <th>Detalles</th>
+                            </tr>
+                        </thead>
+                    </table>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -125,4 +153,38 @@
         </div>
     </div>
 </div>
+
+<div class="modal fade bd-example-modal-lg" id="modal_cigars" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog  modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="title"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="collapse show">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="listCigar" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Cigarro</th>
+                                        <th>Cantidad</th>
+                                        <th>Precio</th>
+                                        <th>Total</th>
+                                    </tr>
+                                </thead>                            
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <script src="<?php echo base_url(); ?>assets/js_admin/detailsRoute.js"></script>

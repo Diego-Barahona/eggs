@@ -60,7 +60,8 @@
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center pb-4" href="">
 
-            <img src="<?php echo base_url(); ?>assets/img/" style="height:60px ;width:60px" >
+          
+            <img src="<?php echo base_url(); ?>assets/img/logos/side2.png" style="height:100px ;width:150px" >
 
             </a>
            
@@ -68,22 +69,31 @@
             <!-- Divider -->
             <hr class="sidebar-divider">
 
+            
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link" href="">
+                <a class="nav-link" href="<?php echo base_url(); ?>adminCards">
                     <i class="fas fa-home"></i>
                     <span>Inicio</span></a>
                     <hr class="sidebar-divider">
             </li>
 
+            <li class="nav-item">
+                <a class="nav-link" href="<?php echo base_url(); ?>cliente">
+                    <i class="fas fa-users"></i>
+                    <span>Clientes</span>
+                </a>
+            <hr class="sidebar-divider">
         
             <!-- Nav Item - Routes-->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#">
+                <a class="nav-link collapsed" href="<?php echo base_url(); ?>adminRoutesSeller">
                 <i class="fas fa-map-signs"></i>
                     <span>Rutas</span>
                 </a>
             </li>
+
+            <hr class="sidebar-divider">
         </ul>
         <!-- End of Sidebar -->
 <!------------------------------------------------------      content                                        ------------------------------------------------------------->
