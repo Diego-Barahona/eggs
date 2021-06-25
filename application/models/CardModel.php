@@ -20,9 +20,10 @@ class CardModel extends CI_Model
                 WHERE MONTH(v.fechaVenta)=?";
                 $utilidades= $this->db->query($sql1,array($mes))->result();
 
-                $sql2="SELECT  SUM(totalVenta) as ventas
-                FROM venta
-                WHERE MONTH(fechaVenta)=?";
+                $sql2="SELECT  SUM(v.totalVenta) as ventas
+                FROM venta v
+                JOIN ventacigarro vc ON v.codVenta = vc.codVenta
+                WHERE MONTH(v.fechaVenta)=?";
                 $ventas= $this->db->query($sql2,array($mes))->result();
 
                 $sql3="SELECT  SUM(costoGasto) as compras
@@ -37,9 +38,15 @@ class CardModel extends CI_Model
                 FROM deuda";
                 $credito= $this->db->query($sql5)->result();
 
+                $sql6="SELECT  SUM(v.totalVenta) as ventash
+                FROM venta v
+                JOIN ventahuevo vh ON v.codVenta = vh.codVenta
+                WHERE MONTH(v.fechaVenta)=? ";
+                $ventash= $this->db->query($sql6,array($mes))->result();
+
                 return array( "utilidades"=> $utilidades 
                 ,"ventas" => $ventas,"compras" => $compras, "gastos" => $gastos,
-                "credito" => $credito  );
+                "credito" => $credito , "ventash" => $ventash);
                 
         }
 }

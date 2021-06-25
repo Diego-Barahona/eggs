@@ -168,7 +168,33 @@ $route['charts/credit']['GET']= 'Graphics/chartCredit';
 $route['charts/stock']['GET']= 'Graphics/chartStock';
 
 ///// graphics api
-$route['api/chart/utils']['POST']= 'Graphics/getUtilsByPeriod';
-$route['api/chart/sale']['GET']= 'Graphics/getUtilsByPeriod';
+$route['api/chart/utils']['POST']= 'Graphics/getUtilsByPeriod'; 
+$route['api/chart/buys']['POST']= 'Graphics/getBuysByPeriod';// ready 
+$route['api/chart/sale']['POST']= 'Graphics/getSaleByPeriod';
+$route['api/chart/sale/product']['POST']= 'Graphics/getSaleByProduct'; // in process
 $route['api/chart/credit']['GET']= 'Graphics/getUtilsByPeriod';
+$route['api/chart/expensives']['POST']= 'Graphics/getExpensiveByPeriod';
+
+$route['api/chart/buys/product']['POST']= 'Graphics/getBuyByProduct';
+
+///// proveedor cigar 
+
+$route['api/proveedor_cigar/getFields']['GET']= 'ProveedorCigarro/getfields'; 
+$route['api/cigars/getFields']['GET']= 'ProveedorCigarro/getCigars'; 
+$route['api/edit_precio']['POST']= 'ProveedorCigarro/editPrecio'; 
+$route['api/create_precio']['POST']= 'ProveedorCigarro/addPrecio'; 
+
+// proveedor eggs
+$route['api/get_proveedorHuevo']['GET']= 'ProveedorHuevo/list';
+$route['api/eggs/getFields']['GET']= 'ProveedorHuevo/getEggs';
+$route['api/proveedor_eggs/getFields']['GET']= 'ProveedorHuevo/getfields'; 
+$route['api/eggs/edit_precio']['POST']= 'ProveedorHuevo/editPrecio'; 
+$route['api/eggs/create_precio']['POST']= 'ProveedorHuevo/addPrecio'; 
+
+
+
+
+
+
+
 

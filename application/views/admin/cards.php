@@ -8,22 +8,23 @@
       <div class="card text-white bg-info mb-3 mx-2" style="width: 13rem; height:13rem;">
          <div class="card-header text-center" style="font-weight: bold; color:black;" id="utilidades"><strong>0</strong> </div>
          <div class="card-body">
-            <h5 class="card-title">Utilidades  </h5>
+            <h5 class="card-title">Utilidades</h5>
             <button type="button" class="btn btn-outline-light"><i class="fas fa-hand-holding-usd" style="font-size:60px;" id="btn_utilidades"></i></button>
          </div>
       </div>
       <div class="card text-white mb-3 mx-3" style="width: 13rem; height:13rem; background-color: #ab47bc">
          <div class="card-header text-center" style="font-weight: bold; color:black" id="gastos"><strong>0</strong></div>
          <div class="card-body">
-            <h5 class="card-title">Gastos totales</h5>
+            <h5 class="card-title">Gastos</h5>
             <button type="button" class="btn btn-outline-light"><i class="fas fa-user-clock" style="font-size:60px;" id="btn_gastos"></i></button>
          </div>
       </div>
       <div class="card text-white mb-3 ml-2" style="width: 13rem; height:13rem; background:#00897b">
       <div class="card-header text-center" style="font-weight: bold; color:black" id="ventas"><strong>0</strong> </div>
          <div class="card-body">
-            <h5 class="card-title">Ventas</h5>
-            <button type="button" class="btn btn-outline-light"><i class="fa fa-cogs" style="font-size:60px;" id="btn_ventas"></i></button>
+            <h5 class="card-title">Venta cigarros</h5>
+            <button type="button" class="btn btn-outline-light"><i class="fas fa-smoking" style="font-size:60px;" id="btn_ventas"></i></button>
+           
          </div> 
       </div>
       
@@ -47,10 +48,11 @@
       </div>
       
       <div class="card text-white bg-danger mb-3 ml-2" style="width: 13rem; height:13rem;">
-         <div class="card-header text-center" style="font-weight: bold; color:black" id="down"><strong> 0</strong></div>
+         <div class="card-header text-center" style="font-weight: bold; color:black" id="venta_h"><strong> 0</strong></div>
          <div class="card-body">
-            <h5 class="card-title">Stock</h5>
-            <button type="button" class="btn btn-outline-light"><i class="fa fa-thumbs-down" style="font-size:60px;" id="btn_stock"></i></button>
+            <h5 class="card-title">Venta huevos</h5>
+            <button type="button" class="btn btn-outline-light"><i class="fas fa-egg" style="font-size:60px;" id="btn_ventah"></i></button>
+           
          </div>
       </div>
    </div>

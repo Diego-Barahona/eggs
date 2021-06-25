@@ -3,7 +3,7 @@
 
     <ol class="breadcrumb">
       <li class="breadcrumb-item active">Gráficos / Opciones de visualización</li>
-    </ol>
+    </ol><!-- end ol  -->
 
     <div class="accordion" id="accordionExample">
       <div class="card mb-3">
@@ -19,16 +19,16 @@
           <div class="card-body">
            En esta sección se puede visualizar de manera organizada los indicadores por periodos de todos los parámetros relevantes del sistema , ejemplo: utilidades , gastos , montos de compra, entre otros , a través de gráficos.
           </div>
-        </div>
-      </div>
-    </div>
+        </div><!-- collapse end -->
+      </div><!-- end card  -->
+    </div><!-- end acordion -->
     
     <div class="card mb-3">
       <div class="card-header">
         <i class="fas fa-table"></i>
-        Lista de productos
-      </div>
-      <div class="card-body">
+        Tabla de gráficos
+      </div><!-- end card header  -->
+      <div class="card-body"> <!-- begin card body   -->
       <div class="table-responsive">
           <table class="table table-bordered" id="table-charts" width="100%" cellspacing="0">
             <thead>
@@ -38,14 +38,13 @@
                 <th>Acción</th>
               </tr>
             </thead>
-          </table>
-        </div>
+          </table><!-- end table-->
+        </div><!-- end div table-->
 
-      </div>
-    </div>
-   
-    <div class="row mb-3"></div>
+      </div><!-- end card body-->
+    </div><!-- end card-->
+    
 
-  </div>
-</div>
-<script src="<?php echo base_url(); ?>assets/js_admin/adminCharts.js"></script>
+  </div><!-- end conteiner-->
+</div><!-- end content-->
+<script src="<?php echo base_url(); ?>assets/js_admin/charts/adminCharts.js"></script>

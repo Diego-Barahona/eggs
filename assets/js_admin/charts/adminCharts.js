@@ -5,12 +5,12 @@ $(() => {
 getOptionsCharts=()=> {
 
 let data = [
-   { parametro :"Información general",tipo:1},
-   { parametro :"Utilidades",tipo:2 },
-   { parametro :"Ventas",tipo:3},
-   { parametro :"Gastos",tipo:4},
-   { parametro :"Compras",tipo:5},
-   { parametro :"Crédito",tipo:6},
+
+   { parametro :"Utilidades",tipo:1 },
+   { parametro :"Ventas",tipo:2},
+   { parametro :"Gastos",tipo:3},
+   { parametro :"Compras",tipo:4},
+   { parametro :"Crédito",tipo:5},
  
 ];
 
@@ -44,32 +44,28 @@ $("#table-charts").on("click", "button", function () {
 	let data = tabla.row($(this).parents("tr")).data();
 	if ($(this)[0].name == "show_charts") {
       console.log("hola");
-		if(data.tipo == 1){
-            let url = 'charts/general';
-            window.location.assign(host_url+url);
-
-        }
-        if(data.tipo == 2){
+	
+        if(data.tipo == 1){
             let url = 'charts/utils';
             window.location.assign(host_url+url);
 
         }
-        if(data.tipo == 3){
+        if(data.tipo == 2){
             let url = 'charts/sale';
             window.location.assign(host_url+url);
 
         }
-        if(data.tipo == 4){
+        if(data.tipo == 3){
             let url = 'charts/expensive';
             window.location.assign(host_url+url);
 
         }
-        if(data.tipo == 5){
+        if(data.tipo == 4){
             let url = 'charts/buys';
             window.location.assign(host_url+url);
 
         }
-        if(data.tipo == 6){
+        if(data.tipo == 5){
             let url = 'charts/credit';
             window.location.assign(host_url+url);
 

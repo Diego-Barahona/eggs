@@ -24,6 +24,7 @@
     <link href="<?php echo base_url(); ?>assets/vendor/jquery-ui-1.12.1.custom/jquery-ui.css" type="text/css" rel="stylesheet"/>
     <script>
     const host_url = "<?php echo base_url(); ?>";
+    let venta=0;
   </script>
 <script src="https://www.gstatic.com/charts/loader.js"></script>
   <style type="text/css">

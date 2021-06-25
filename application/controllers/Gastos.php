@@ -48,7 +48,7 @@ public function index()	{
 			// if(form_error('idGastoGeneral')) $msg['idGastoGeneral'] = form_error('idGastoGeneral');
 			if(form_error('nomGastoGeneral')) $msg['nomGastoGeneral'] = form_error('nomGastoGeneral');
 			if(form_error('costoMonetarioGeneral')) $msg['costoMonetarioGeneral'] = form_error('costoMonetarioGeneral');
-			
+			if(form_error('fecha')) $msg['fecha'] = form_error('fecha');
 			
 			$this->response->sendJSONResponse($msg);
 
@@ -88,6 +88,7 @@ public function index()	{
 			// if(form_error('idGastoGeneral')) $msg['idGastoGeneral'] = form_error('idGastoGeneral');
 			if(form_error('nomGastoGeneral')) $msg['nomGastoGeneral'] = form_error('nomGastoGeneral');
 			if(form_error('costoMonetarioGeneral')) $msg['costoMonetarioGeneral'] = form_error('costoMonetarioGeneral');
+			if(form_error('fecha')) $msg['fecha'] = form_error('fecha');
 			
 			$this->response->sendJSONResponse($msg);
 			$this->output->set_status_header(400); 

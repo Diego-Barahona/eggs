@@ -122,6 +122,7 @@ class Cost extends CI_Controller {
     public function editCost()
     {
         if ($this->accesscontrol->checkAuth()['correct']) {
+            
             $data = $this->input->post('data');
             $fecha = $data['fecha'];
             $codigo = $data['codigo'];

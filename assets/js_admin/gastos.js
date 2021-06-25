@@ -41,6 +41,16 @@ $("#costoMonetarioGeneral").change(() =>{
 	}
 });
 
+$("#codGastoGeneral").change(() =>{ 
+	let codGastoGeneral = $("#codGastoGeneral").val();
+	if(codGastoGeneral){
+		$("#frm_codGastoGeneral > input").removeClass("is-invalid");
+	}else{
+		$("#frm_codGastoGeneral > input").addClass("is-invalid");
+	}
+});
+
+
 
 
 
@@ -108,8 +118,12 @@ const tablaGastos = $('#list_gastos').DataTable({
         },
     ],
 	columns: [
-		{ data: "idGastoGeneral" },
+        { "render": function (data, type, row){   
+            msg ="---";
+            if(row.codigo){ return row.codigo }else{  return msg;}
+	   	} },
         { data: "nomGastoGeneral" },
+        { data: "fechaGasto" },
         { "render": function (data, type, row){     
 			return totalFormat(row.costoMonetarioGeneral)
 	   	}},
@@ -173,14 +187,17 @@ create_edit_gastos = () =>{
 	
     let nomGastoGeneral = $("#nomGastoGeneral").val();
     let costoMonetarioGeneral = $("#costoMonetarioGeneral").val();
+    let codGastoGeneral = $("#codGastoGeneral").val();
+    let fecha = $("#fechaGastoGeneral").val();
     
     
     if(edit){
      url = "api/update_gastos";
-     data = {idGastoGeneral:idGastoEdit,nomGastoGeneral: nomGastoGeneral, costoMonetarioGeneral: costoMonetarioGeneral,nomGastoGeneral_old:nomGastoGeneralEdit};
+     data = {idGastoGeneral:idGastoEdit,nomGastoGeneral: nomGastoGeneral, fecha: fecha, codGastoGeneral: codGastoGeneral,costoMonetarioGeneral: costoMonetarioGeneral,nomGastoGeneral_old:nomGastoGeneralEdit};
     }else{
      url = "api/create_gastos";
-     data = { nomGastoGeneral: nomGastoGeneral, costoMonetarioGeneral: costoMonetarioGeneral};
+     data = { nomGastoGeneral: nomGastoGeneral, costoMonetarioGeneral: costoMonetarioGeneral,codGastoGeneral:codGastoGeneral,fecha:fecha};
+     console.log(data);
     } 
 
     $.ajax({
@@ -284,11 +301,8 @@ show_info_update_gastos = (data) =>{
     $("#idGastoGeneral").val(data.idGastoGeneral);
     $("#nomGastoGeneral").val(data.nomGastoGeneral);
     $("#costoMonetarioGeneral").val(data.costoMonetarioGeneral);
-    
-
-
-    
-   
+    $("#fechaGastoGeneral").val(data.fechaGasto);
+    $("#codGastoGeneral").val(data.codigo);
     $("#titulo").text("Editar Gastos");
     $("#btn_ok").text("Guardar Cambios");
     $("#modal_gastos").modal("show");
@@ -347,11 +361,12 @@ addErrorStyle = errores => {
 close_modal_gastos = () =>{
     $("#nomGastoGeneral").val("");
     $("#costoMonetarioGeneral").val("");
-    
-    
+    $("#codGastoGeneral").val("");
+    $("#fechaGastoGeneral").val("");
     $("#frm_nomGastoGeneral > input").removeClass("is-invalid");
     $("#frm_costoMonetarioGeneral > input").removeClass("is-invalid");
-   
+    $("#frm_codGastoGeneral > input").removeClass("is-invalid");
+    $("#frm_fechaGastoGeneral > input").removeClass("is-invalid");
     $('#modal_gastos').modal('hide');
 }
 
