@@ -62,12 +62,16 @@ const tabla = $('#listRoutes').DataTable({
 		   "render": function (data, type, row){
 
 			let f = new Date();
+
 			let mes = (f.getMonth()+1).toString();
-			
 			if(mes.length == 1) mes = '0'+mes;
 			
-			let fecha = f.getFullYear()+ "-"+ mes + "-"+ f.getDate();	
+			let dia = (f.getDate()).toString();
+			if(dia.length == 1) dia = '0'+dia;
 
+			let fecha = f.getFullYear()+ "-"+ mes + "-"+ dia;	
+			console.log(fecha);
+			console.log(row.fecha);
 			if(fecha == row.fecha){
 				return `<button type='button' name='btn_complete' class='btn btn-warning'>
 				Completar
