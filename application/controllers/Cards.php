@@ -16,12 +16,14 @@ class Cards extends CI_Controller {
             $user = $_SESSION['rango'];
 			$path ='';
 			if($user == '2'){
+			
 				$path ='seller';
 			}else if($user == '1'){
+			
 				$path ='admin';
 			}
 			$this->load->view('shared/'.$path.'/header');
-			$this->load->view('admin/cards');
+			$this->load->view(''.$path.'/cards');
 			$this->load->view('shared/'.$path.'/footer');
         } else {
 			redirect('Home/login', 'refresh');
@@ -38,11 +40,6 @@ class Cards extends CI_Controller {
             $this->response->sendJSONResponse(array('msg' => 'Permisos insuficientes'), 400);
         }
     }
-
-   
-
-
-
 
 	//Funcion para listar usuario
 

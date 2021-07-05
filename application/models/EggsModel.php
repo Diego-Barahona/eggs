@@ -57,10 +57,18 @@ class EggsModel extends CI_Model
         ); 
 
         if($result->num_rows() > 0){
-            return false; 
+
+            $data=array(
+            "stock"=> $stock,
+            "format"=>$format,
+            "id"=>$id);
+            $query = "UPDATE huevo SET  stock = ?,  huevo.format= ? WHERE id=?";
+            $this->db->query($query, $data);  
+            return true; 
+
         }else{
 
-            $query = "UPDATE huevo SET huevo.name= ? , huevo.format= ? , stock = ? WHERE id=?";
+            $query = "UPDATE huevo SET huevo.name= ? , stock = ?, huevo.format= ?  WHERE id=?";
             return $this->db->query($query, $aux );  
         }  
        

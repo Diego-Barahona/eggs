@@ -155,7 +155,7 @@
 
 
         
-      <div class="table-responsive" id="datatable">
+      <div class="table-responsive" >
           <table class="table table-bordered" id="table-utilidades" width="100%" cellspacing="0">
             <thead>
               <tr>
@@ -173,5 +173,63 @@
         
   </div><!-- class conteiner-->
 </div><!-- class content -->
+
+
+<div class="modal fade" data-backdrop="static" data-keyboard="false" id="modal_chartUtils" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="titulo">Detalles de utilidades</h5>
+                <button type="button" class="close" onclick="close_modal_proveedorCigarro()" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+              <form>
+                 <div class="form-group" id="frm_range">
+                      <label>Fecha recaudación</label>
+                      <input type="text" class="form-control" id="modal_fecha" name="modal_fecha" disabled>
+                      <div class="invalid-feedback"></div>
+                  </div>
+                 
+                  <div class="form-group" id="frm_range">
+                      <label>Código de venta</label>
+                      <input type="text" class="form-control" id="modal_codigo" name="modal_codigo"disabled>
+                      <div class="invalid-feedback"></div>
+                  </div>
+                  
+                  <div class="form-group" id="frm_range">
+                      <label>Precio de compra </label>
+                      <input type="text" class="form-control" id="modal_compra" name="modal_compra" disabled>
+                      <div class="invalid-feedback"></div>
+                  </div> 
+                  
+                  
+                  <div class="form-group" id="frm_range">
+                      <label>Total de venta</label>
+                      <input type="text" class="form-control" id="modal_tventa" name="modal_tventa" disabled>
+                      <div class="invalid-feedback"></div>
+                  </div> 
+               
+
+                  <div class="form-group" id="frm_range">
+                      <label> Total de utilidad</label> 
+                      <input type="text" class="form-control" id="modal_utilidad" name="modal_utlidad" disabled>
+                      <div class="invalid-feedback"></div>
+                  </div>
+            
+                 
+
+                
+                  <div class="form-group float-right">
+                      <button onclick="close_modal_proveedorCigarro()" type="button" class="btn btn-secondary btn-danger">Cerrar</button>
+         
+                  </div>
+              </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <script src="<?php echo base_url(); ?>assets/js_admin/charts/chartUtils.js"></script>

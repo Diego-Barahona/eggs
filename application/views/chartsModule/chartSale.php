@@ -185,7 +185,7 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="titulo">Agregar Precio</h5>
+                <h5 class="modal-title" id="titulo">Detalles de la venta </h5>
                 <button type="button" class="close" onclick="close_modal_proveedorCigarro()" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
@@ -199,20 +199,20 @@
                   </div>
                  
                   <div class="form-group" id="frm_range">
-                      <label>Codigo </label>
+                      <label>Código </label>
                       <input type="text" class="form-control" id="modal_codigo" name="modal_codigo"disabled>
                       <div class="invalid-feedback"></div>
                   </div>
-
+                   <!--
                   <div class="form-group" id="frm_range">
                       <label>Forma de pago  </label>
                       <input type="text" class="form-control" id="modal_metodo" name="modal_metodo" disabled>
                       <div class="invalid-feedback"></div>
-                  </div>
+                  </div> -->
 
                   <div class="form-group" id="frm_range">
-                      <label>Cantidad de unides  </label>
-                      <<input type="text" class="form-control" id="modal_cant" name="modal_cant" disabled>
+                      <label>Cantidad de unidades  </label>
+                      <input type="text" class="form-control" id="modal_cant" name="modal_cant" disabled>
                       <div class="invalid-feedback"></div>
                   </div>
                   <div class="form-group" id="frm_range">
@@ -227,7 +227,7 @@
                   </div> 
                   <div class="form-group float-right">
                       <button onclick="close_modal_proveedorCigarro()" type="button" class="btn btn-secondary btn-danger">Cerrar</button>
-                      <button id="btn_ok" type="button" class="btn btn-primary btn-success">Agregar Precio</button>
+         
                   </div>
               </form>
             </div>

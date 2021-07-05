@@ -23,16 +23,35 @@ const tabla = $("#table-utilidades").DataTable({
         { data: "fecha" },
 		{ data: "codigo" },
         { data: "utilidades" },
-        {
-			defaultContent: `<button type='button' name='go_to' class='btn btn-success'>
-                                 
-                                  <i class="fas fa-search"></i>
-                              </button>`,
+        { defaultContent: `<button type='button' name='details' class='btn btn-success'> <i class="fas fa-search"></i></button>`,
 		}
         
 		
 	],
 });
+
+$("#table-utilidades").on("click", "button", function () {
+	let data = tabla.row($(this).parents("tr")).data();
+	if ($(this)[0].name == "details") {
+        show_modal_details(data);
+    }
+     
+	
+	
+});
+
+show_modal_details=(data)=>{
+    $("#modal_chartExpensive").modal("show");
+    $("#modal_fecha").val(data.fecha);
+    $("#modal_codigo").val(data.codigo);
+    $("#modal_precio").val(data.utilidades);
+    $("#modal_nombre").val(data.nombre);
+}
+
+
+close_modal_proveedorCigarro=()=>{
+    $("#modal_chartExpensive").modal("hide");
+}
 
 
 
@@ -605,13 +624,11 @@ graficoEntreMeses=(periodo1,periodo2)=> {
     
     if(periodo1.tiempo1 && periodo2.tiempo1){
         if(periodo1.tiempo1 == periodo2.tiempo1 && periodo1.tiempo2 == periodo2.tiempo2 ){
-
+            $("#graphic-content").hide();
             swal({
                 title: "Atención",
                 icon: "warning",
                 text: "No es posible comparar dos periodos iguales.Reintente de nuevo.",
-                 }).then( ()=>{
-                $("#graphic-content").hide();
                  }); 
                 
      }else{  
@@ -633,7 +650,7 @@ graficoEntreMeses=(periodo1,periodo2)=> {
              google.charts.setOnLoadCallback(drawChart); 
     }
 }else{
-
+    $("#graphic-content").hide();
     let msg="No hay registro de los periodos seleccionados. Intente nuevamente."
 
     if(!periodo1.tiempo1 && periodo2.tiempo1){
@@ -645,8 +662,6 @@ graficoEntreMeses=(periodo1,periodo2)=> {
         title: "Atención",
         icon: "warning",
         text: msg,
-    }).then( ()=>{
-        $("#graphic-content").hide();
     });
 
 }

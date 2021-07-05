@@ -39,13 +39,7 @@
          </div> 
         
       </div>
-      <div class="card text-white  mb-3 mx-3" style="width: 13rem; height:13rem; background: #ffa726 ">
-         <div class="card-header text-center" style="font-weight: bold; color:black" id="credito"><strong>0</strong> </div>
-         <div class="card-body">
-            <h5 class="card-title"> Crédito</h5>
-            <button type="button" class="btn btn-outline-light"><i class="fas fa-funnel-dollar" style="font-size:60px;" id="btn_credito"></i></button>
-         </div>
-      </div>
+      
       
       <div class="card text-white bg-danger mb-3 ml-2" style="width: 13rem; height:13rem;">
          <div class="card-header text-center" style="font-weight: bold; color:black" id="venta_h"><strong> 0</strong></div>

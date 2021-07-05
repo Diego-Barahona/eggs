@@ -17,117 +17,96 @@ class BuyModel extends CI_Model
        
         $tipo=$data['tipoProducto'];
         
-      
-       /*  if ($row->num_rows() == 0 ) {  */
-        //1 es huevo 
-       
        if($tipo == "2" ){
+        
         $idProducto= $data['producto'];
-        $cigar = "SELECT stock FROM cigarros WHERE id =?" ;
-        $result = $this->db->query($cigar, array($idProducto))->row_array(); 
+        $precioCompra =$data['valor'];
+       
+             $compra=array(
 
-        $stock_actual = $data['cantidad'] + $result['stock'];  // actualiza el stock en el tipo de huevo 
-        $query = "UPDATE cigarros SET stock= ? WHERE id=?";
-        $this->db->query($query,array($stock_actual, $idProducto)); 
-    
-            $compra=array(
-                'cantidad'=> $data['cantidad'],
-                'precioCompra'=> $data['valor'],
-                'total'=> $data['total'],
-                'stockReal'=> $stock_actual,
-                'costoId'=>  $data['codigo'] ,
-                'cigarroId'=>  $data['producto'], // cambiar cuando se implemente ! a dinamico
+            'cantidad'=> $data['cantidad'],
+            'precioCompra'=> $data['valor'],
+            'total'=> $data['total'],                  
+            'costoId'=>  $data['codigo'] ,
+            'cigarroId'=>  $data['producto'], 
             );
 
+            // contador para saber si exite o no el producto-precio en tabla stock_cigarro
+            $query_stock = "SELECT COUNT(*) as contador FROM stock_cigarro WHERE codTipoProducto IN (?) and precioCompra=?";
+            $count_row =  $this->db->query( $query_stock,array($idProducto,$precioCompra))->row_array();
 
-            $query_stock = "SELECT COUNT(*) as contador FROM stock_cigarro WHERE codTipoProducto IN (?)";
-            $count_row =  $this->db->query( $query_stock,array($idProducto))->row_array();
+            if($count_row['contador'] == 0){//si no existe -> lo crea 
 
-            if($count_row['contador'] == 0){
+                $row = array( 'precioCompra'=> $data['valor'], 'auxiliar'=> $data['cantidad'],'cantidad'=> $data['cantidad'],'codTipoProducto'=>  $data['producto']);
 
-                $row = array( 'precioCompra'=> $data['valor'], 'cantidad'=> $data['cantidad'],'codTipoProducto'=>  $data['producto']);
-
-                $save_stock = "INSERT INTO stock_cigarro(precioCompra,cantidad,codTipoProducto) VALUES (?,?,?)";
+                $save_stock = "INSERT INTO stock_cigarro(precioCompra,auxiliar,cantidad,codTipoProducto) VALUES (?,?,?,?)";
                 $this->db->query($save_stock, $row);
 
                
-            }else { 
+            }else { //si existe -> le suma cantidad al stock de ese producto-precio
 
-                $query_cant= "SELECT cantidad FROM stock_cigarro WHERE codTipoProducto IN (?)";
-                $cant_old = $this->db->query($query_cant, $idProducto)->row_array();
-
+                $query_cant= "SELECT cantidad ,auxiliar FROM stock_cigarro WHERE codTipoProducto IN (?) and precioCompra=?";
+                $cant_old = $this->db->query($query_cant,array($idProducto,$precioCompra))->row_array();
+                
                 $new_stock = ($cant_old['cantidad'] + $data['cantidad']);
+                $new_auxiliar= ($cant_old['auxiliar'] + $data['cantidad']);
+                                                                                                                                                                   
+                $row = array('auxiliar'=> $new_auxiliar, 'cantidad'=> $new_stock , 'codTipoProducto'=>  $data['producto'],'precioCompra'=>$precioCompra );
 
-                                                                                                                                                       
-                $row = array( 'cantidad'=> $new_stock , 'codTipoProducto'=>  $data['producto'] );
-
-                $save_stock = "UPDATE stock_cigarro SET cantidad=? WHERE codTipoProducto = ?";
+                $save_stock = "UPDATE stock_cigarro SET auxiliar = ?, cantidad=? WHERE codTipoProducto = ? and precioCompra=?";
                 $this->db->query($save_stock, $row);
 
             }
 
-            $query = "INSERT INTO compra_cigarro(cantidad,precioCompra,total,stockReal,costoId,cigarroId) VALUES (?,?,?,?,?,?)";
+            $query = "INSERT INTO compra_cigarro(cantidad,precioCompra,total,costoId,cigarroId) VALUES (?,?,?,?,?)";
             return $this->db->query($query, $compra);
-
            
          } else { 
             
         
             $idProducto= $data['producto'];
-            $eggs = "SELECT stock FROM huevo WHERE id =?" ;
-            $result = $this->db->query($eggs, array($idProducto))->row_array(); 
-
-            $stock_actual = ($data['cantidad'] + $result['stock']);  // actualiza el stock en el tipo de huevo 
-            $query = "UPDATE huevo SET stock= ? WHERE id=?";
-            $this->db->query($query,array($stock_actual, $idProducto)); 
-        
+            $precioCompra=$data['valor'];
               
              $compra=array(
 
             'cantidad'=> $data['cantidad'],
             'precioCompra'=> $data['valor'],
             'total'=> $data['total'],                  
-            'stockReal'=> $stock_actual,              
             'costoId'=>  $data['codigo'] ,
             'huevoId'=>  $data['producto'], 
             );
 
 
-            
-            $query_stock = "SELECT COUNT(*) as contador FROM stock_huevo WHERE codTipoProducto IN (?)";
-            $count_row =  $this->db->query( $query_stock,array($idProducto))->row_array();
+            // contador para saber si exite o no el producto-precio en tabla stock_huevo
+            $query_stock = "SELECT COUNT(*) as contador FROM stock_huevo WHERE codTipoProducto IN (?) and precioCompra=?";
+            $count_row =  $this->db->query( $query_stock,array($idProducto,$precioCompra))->row_array();
 
-            if($count_row['contador'] == 0){
+            if($count_row['contador'] == 0){//si no existe -> lo crea 
 
-                $row = array( 'precioCompra'=> $data['valor'], 'cantidad'=> $data['cantidad'],'codTipoProducto'=>  $data['producto']);
+                $row = array( 'precioCompra'=> $data['valor'], 'auxiliar'=> $data['cantidad'],'cantidad'=> $data['cantidad'],'codTipoProducto'=>  $data['producto']);
 
-                $save_stock = "INSERT INTO stock_huevo(precioCompra,cantidad,codTipoProducto) VALUES (?,?,?)";
+                $save_stock = "INSERT INTO stock_huevo(precioCompra,auxiliar,cantidad,codTipoProducto) VALUES (?,?,?,?)";
                 $this->db->query($save_stock, $row);
 
                
-            }else { 
+            }else { //si existe -> le suma cantidad al stock de ese producto-precio
 
-                $query_cant= "SELECT cantidad FROM stock_huevo WHERE codTipoProducto IN (?)";
-                $cant_old = $this->db->query($query_cant, $idProducto)->row_array();
-
+                $query_cant= "SELECT cantidad ,auxiliar FROM stock_huevo WHERE codTipoProducto IN (?) and precioCompra=?";
+                $cant_old = $this->db->query($query_cant,array($idProducto,$precioCompra))->row_array();
+                
                 $new_stock = ($cant_old['cantidad'] + $data['cantidad']);
+                $new_auxiliar= ($cant_old['auxiliar'] + $data['cantidad']);
                                                                                                                                                                    
-                $row = array( 'cantidad'=> $new_stock , 'codTipoProducto'=>  $data['producto'] );
+                $row = array('auxiliar'=> $new_auxiliar, 'cantidad'=> $new_stock , 'codTipoProducto'=>  $data['producto'],'precioCompra'=>$precioCompra );
 
-                $save_stock = "UPDATE stock_huevo SET cantidad=? WHERE codTipoProducto = ?";
+                $save_stock = "UPDATE stock_huevo SET auxiliar = ?, cantidad=? WHERE codTipoProducto = ? and precioCompra=?";
                 $this->db->query($save_stock, $row);
 
             }
 
-            $query = "INSERT INTO compra_huevo(cantidad,precioCompra,total,stockReal,costoId,huevoId) VALUES (?,?,?,?,?,?)";
+            $query = "INSERT INTO compra_huevo(cantidad,precioCompra,total,costoId,huevoId) VALUES (?,?,?,?,?)";
             return $this->db->query($query, $compra);
         } 
-        
-
-    /* }else{
-
-        return false;
-    } */
 
     }
 

@@ -9,9 +9,9 @@ class CardModel extends CI_Model
                 parent::__construct();
         }
 
-        public function getDataCards()
-        {       
-                
+        public function getDataCards(){       
+                if($_SESSION['rango']==1){
+
                 $mes=date("m");
 
                 $sql1="SELECT  SUM(utilidades) as utilidades
@@ -47,6 +47,39 @@ class CardModel extends CI_Model
                 return array( "utilidades"=> $utilidades 
                 ,"ventas" => $ventas,"compras" => $compras, "gastos" => $gastos,
                 "credito" => $credito , "ventash" => $ventash);
+
+                }else{
+                        if($_SESSION['rango']==2){
+
+                                $user = $_SESSION['id'];//id proveedor
+
+                                $mes= '06';
+                                
+                
+                                $sql2="SELECT *
+                                FROM venta v
+                                JOIN ventacigarro vc ON v.codVenta = vc.codVenta 
+                                WHERE  v.codVendedor =? and MONTH(v.fechaVenta)=? 
+                                GROUP BY v.codVenta";
+                                $ventas_c= $this->db->query($sql2,array($user,$mes))->result();
+                                //MONTH(v.fechaVenta)=? and
+                              
+                                $sql6="SELECT  *
+                                FROM venta v
+                                JOIN ventahuevo vh ON v.codVenta = vh.codVenta
+                                WHERE  v.codVendedor =? and MONTH(v.fechaVenta)=? 
+                                GROUP BY v.codVenta";
+                                $ventas_h= $this->db->query($sql6,array($user,$mes))->result();
+                           
+                                return array( $ventas_c, $ventas_h);
+
+
+
+                        }
+                }
                 
         }
+
+
+    
 }

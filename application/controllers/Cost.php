@@ -58,11 +58,7 @@ class Cost extends CI_Controller {
             $productos=$data['productos'];
             $datos=array();
             $array = json_decode($productos, true);
-
-
-            
-
-     
+         
             $ok = true;
             $err = array();
             
@@ -91,6 +87,8 @@ class Cost extends CI_Controller {
                $res=$this->CostModel->insertCost($data);//guardar en tabla de costos 
                 if($res){
                     foreach ($array as $value) {
+
+
                         $datos= array(  
                         "tipoProducto" => $value['tipoProducto'],
                         "producto" => $value['producto'],
@@ -100,7 +98,7 @@ class Cost extends CI_Controller {
                         "codigo" => $value['codigo'],
                         );
 
-        
+
                         $this->load->model('BuyModel');
                         $res=$this->BuyModel->insertBuy($datos);
                    }
@@ -122,7 +120,7 @@ class Cost extends CI_Controller {
     public function editCost()
     {
         if ($this->accesscontrol->checkAuth()['correct']) {
-            
+
             $data = $this->input->post('data');
             $fecha = $data['fecha'];
             $codigo = $data['codigo'];
@@ -154,13 +152,14 @@ class Cost extends CI_Controller {
                 //guardar en tabla de costos 
                  
                 if($this->CostModel->updateCost($data)){
+
                     if($tipoProveedor == $tipoProveedorNuevo){ 
-                          
+                            $this->CostModel->deleteProductOld($array,$codigo,$tipoProveedorNuevo);
                             $this->CostModel->deleteProducts($tipoProveedorNuevo,$codigo); //elimina prductos y salva stockReal
 
                             foreach ($array as $value) {
                                 $datos= array(  
-                                "tipoProducto" => $value['tipoProducto'],
+                                 "tipoProducto" => $value['tipoProducto'],
                                  "producto" => $value['producto'],
                                  "valor" => $value['valor'],
                                  "cantidad" => $value['cantidad'],
@@ -171,9 +170,11 @@ class Cost extends CI_Controller {
                                  $res=$this->CostModel->insertCompra($datos);
                                 }
                           
-                           $this->response->sendJSONResponse(array('msg' => "Producto registrado."));    
-                   }else{
-                         
+                           $this->response->sendJSONResponse(array('msg' => "Producto actualizado."));
+                            
+                   }else{       
+
+                                
                                 $this->CostModel->deleteProducts($tipoProveedor,$codigo);
                                 foreach ($array as $value) {
                                     $datos= array(  
@@ -188,7 +189,7 @@ class Cost extends CI_Controller {
                                      $this->CostModel->insertCompra($datos);
                                     }
                               
-                               $this->response->sendJSONResponse(array('msg' => "Producto registrado.")); 
+                               $this->response->sendJSONResponse(array('msg' => "Producto actualizado.")); 
                             }
 
                  } else {

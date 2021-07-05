@@ -66,11 +66,11 @@ get_data= () => {
 		    obj_credito = data.credito; 
 			obj_ventash = data.ventash; 
 
-            $("#utilidades").html(number_format( obj_utilidades[0].utilidades));
-	        $("#gastos").html(number_format( obj_gastos[0].gastos));
+            $("#utilidades").html( number_format( obj_utilidades[0].utilidades));
+	        $("#gastos").html( number_format( obj_gastos[0].gastos));
 		    $("#ventas").html( number_format(obj_ventas[0].ventas));
 	        $("#credito").html( number_format(obj_credito[0].credito));
-		    $("#compras").html(number_format(obj_compras[0].compras));
+		    $("#compras").html( number_format(obj_compras[0].compras));
 		    $("#venta_h").html( number_format(obj_ventash[0].ventash));
 			
 		} else {
