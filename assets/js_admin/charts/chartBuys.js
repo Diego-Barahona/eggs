@@ -18,7 +18,7 @@ $(() => {
 let selector_product = false;
 let year2 = "";
 let option="";
-let table ="";
+let table_1 ="";
  
 const tabla = $("#table-utilidades").DataTable({
 
@@ -30,7 +30,7 @@ const tabla = $("#table-utilidades").DataTable({
 		{ data: "codigo" },
         { data: "utilidades" },
         {
-			defaultContent: `<button type='button' name='go_to' class='btn btn-success'>
+			defaultContent: `<button type='button' name='details' class='btn btn-success'>
                                  
                                   <i class="fas fa-search"></i>
                               </button>`,
@@ -39,6 +39,40 @@ const tabla = $("#table-utilidades").DataTable({
 		
 	],
 });
+
+
+
+$("#table-utilidades").on("click", "button", function () {
+	let data = tabla.row($(this).parents("tr")).data();
+	if ($(this)[0].name == "details") {
+        show_modal_details(data);
+    }
+});
+
+show_modal_details=(data)=>{
+
+
+    $("#modal_chartBuys").modal("show");
+    $("#modal_fecha").val(data.fecha);
+    $("#modal_codigo").val(data.codigo);
+    $("#modal_precio").val(data.utilidades);
+    $("#modal_proveedor").val(data.proveedor);
+     if(data.producto == 1){
+        $("#modal_tipo").val("Huevos");
+     }else{
+        $("#modal_tipo").val("Cigarros");
+     }
+   
+    
+}
+
+close_modal_proveedorCigarro=()=>{
+    $("#modal_chartBuys").modal("hide");
+}
+
+
+
+
 // seleccion de periodos
 $("#periodo").on('change',()=> { 
 
@@ -159,7 +193,7 @@ $("#product").on('change', ()=>{
         selector_product = false;
     }else{
         selector_product =true;
-        if(valor ==="1"){ table = "compra_huevo ch";}else{table = "compra_cigarro cc";}
+        if(valor ==="1"){ table_1 = "compra_huevo ch";}else{table_1 = "compra_cigarro cc";}
         console.log("entre 2 ");
     }
 });
@@ -717,28 +751,28 @@ getSaleByProduct = () => {
     if(periodo){
         if(periodo =="1"){ //Anual
 
-         if(year!="" ){  data = {periodo: periodo, year: year , product:product ,table:table}; ok=true;   year2 = year;} // kpi de venta por año 
+         if(year!="" ){  data = {periodo: periodo, year: year , product:product ,table:table_1}; ok=true;   year2 = year;} // kpi de venta por año 
         }
         if(periodo =="2"){ //mensual
             if(month !="" && year !="" && year_2 =="" && month_2=="" ){ 
-                 data = { periodo: periodo, year:year, month:month , product:product , table:table ,option:"1"  }; ok=true;   year2 = year;  option="1"; }
+                 data = { periodo: periodo, year:year, month:month , product:product , table:table_1 ,option:"1"  }; ok=true;   year2 = year;  option="1"; }
         
              if(month =="" && year =="" && year_2 !="" && month_2!="" ){ 
-                    data = { periodo: periodo, year:year_2, month:month_2 ,product:product,table:table ,optiosn:"1" }; ok=true;  year2 = year_2; option="1"; }
+                    data = { periodo: periodo, year:year_2, month:month_2 ,product:product,table:table_1 ,optiosn:"1" }; ok=true;  year2 = year_2; option="1"; }
                     
              if(month !="" && year !="" && year_2 !="" && month_2!="" ){ 
-                    data = { periodo: periodo, year:year, month:month ,year2:year_2, month2:month_2 , table:table , product:product, option:"2" }; ok=true; option="2"; }
+                    data = { periodo: periodo, year:year, month:month ,year2:year_2, month2:month_2 , table:table_1 , product:product, option:"2" }; ok=true; option="2"; }
               }  
         if(periodo =="3"){ // diario
 
             if(date3 !=""){ 
-                data = { periodo: periodo, date1 : date3 , table:table ,product:product,option:"1"}
+                data = { periodo: periodo, date1 : date3 , table:table_1 ,product:product,option:"1"}
                 option="1";
                 ok = true;
             }
             if(date1 !="" && date2 !="" ){  
                 option="2";
-                data = { periodo: periodo, date1 : date1, date2 : date2 , table:table ,product:product,option:"2"}; 
+                data = { periodo: periodo, date1 : date1, date2 : date2 , table:table_1 ,product:product,option:"2"}; 
                 ok = true; }} 
             } 
            console.log(data);

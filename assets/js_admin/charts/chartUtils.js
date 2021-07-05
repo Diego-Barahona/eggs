@@ -24,7 +24,7 @@ const tabla = $("#table-utilidades").DataTable({
 		{ data: "codigo" },
         { data: "utilidades" },
         {
-			defaultContent: `<button type='button' name='go_to' class='btn btn-success'>
+			defaultContent: `<button type='button' name='details' class='btn btn-success'>
                                  
                                   <i class="fas fa-search"></i>
                               </button>`,
@@ -33,6 +33,26 @@ const tabla = $("#table-utilidades").DataTable({
 		
 	],
 });
+$("#table-utilidades").on("click", "button", function () {
+	let data = tabla.row($(this).parents("tr")).data();
+	if ($(this)[0].name == "details") {
+        show_modal_details(data);
+    }
+});
+
+show_modal_details=(data)=>{
+    $("#modal_chartUtils").modal("show");
+    $("#modal_fecha").val(data.fecha);
+    $("#modal_codigo").val(data.codigo);
+    $("#modal_compra").val(data.total_compra);
+    $("#modal_tventa").val(data.total_venta);
+    $("#modal_utilidad").val(data.utilidades);
+}
+
+
+close_modal_proveedorCigarro=()=>{
+    $("#modal_chartUtils").modal("hide");
+}
 
 
 
@@ -603,14 +623,12 @@ graficoEntreMeses=(periodo1,periodo2)=> {
     
     if(periodo1.tiempo1 && periodo2.tiempo1){
         if(periodo1.tiempo1 == periodo2.tiempo1 && periodo1.tiempo2 == periodo2.tiempo2 ){
-
+            $("#graphic-content").hide();
             swal({
                 title: "Atención",
                 icon: "warning",
                 text: "No es posible comparar dos periodos iguales.Reintente de nuevo.",
-                 }).then( ()=>{
-                $("#graphic-content").hide();
-                 }); 
+                 });
                 
      }else{  
              string1 = convertirMes(periodo1.tiempo1) + " / "+periodo1.tiempo2 ; 

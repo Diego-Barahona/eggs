@@ -177,4 +177,62 @@
   </div>
 </div>
 
+
+
+<div class="modal fade" data-backdrop="static" data-keyboard="false" id="modal_chartBuys" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="titulo">Detalles de la compra </h5>
+                <button type="button" class="close" onclick="close_modal_proveedorCigarro()" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+              <form>
+                 <div class="form-group" id="frm_range">
+                      <label>Fecha de compra</label>
+                      <input type="text" class="form-control" id="modal_fecha" name="modal_fecha" disabled>
+                      <div class="invalid-feedback"></div>
+                  </div>
+                 
+                  <div class="form-group" id="frm_range">
+                      <label>Número de factura </label>
+                      <input type="text" class="form-control" id="modal_codigo" name="modal_codigo"disabled>
+                      <div class="invalid-feedback"></div>
+                  </div>
+                   <!--
+                  <div class="form-group" id="frm_range">
+                      <label>Forma de pago  </label>
+                      <input type="text" class="form-control" id="modal_metodo" name="modal_metodo" disabled>
+                      <div class="invalid-feedback"></div>
+                  </div> -->
+                  <div class="form-group" id="frm_range">
+                      <label>Tipo de Producto  </label>
+                      <input type="text" class="form-control" id="modal_tipo" name="modal_codigo" disabled>
+                      <div class="invalid-feedback"></div>
+                  </div>
+
+                  <div class="form-group" id="frm_range">
+                      <label>Proveedor  </label>
+                      <input type="text" class="form-control" id="modal_proveedor" name="modal_proveedor" disabled>
+                      <div class="invalid-feedback"></div>
+                  </div>
+            
+                 
+
+                  <div class="form-group" id="frm_precio">
+                      <label>Total de compra</label>
+                      <input type="text" class="form-control" id="modal_precio" name="modal_precio"  disabled>
+                  </div> 
+                  <div class="form-group float-right">
+                      <button onclick="close_modal_proveedorCigarro()" type="button" class="btn btn-secondary btn-danger">Cerrar</button>
+         
+                  </div>
+              </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script src="<?php echo base_url(); ?>assets/js_admin/charts/chartBuys.js"></script>

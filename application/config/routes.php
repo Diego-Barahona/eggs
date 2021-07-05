@@ -192,17 +192,23 @@ $route['api/proveedor_eggs/getFields']['GET']= 'ProveedorHuevo/getfields';
 $route['api/eggs/edit_precio']['POST']= 'ProveedorHuevo/editPrecio'; 
 $route['api/eggs/create_precio']['POST']= 'ProveedorHuevo/addPrecio'; 
 
-
-
-
-
-
-
-
-
 /* Routes Profile Seller */
 
 /* Admin Route */
 $route['adminRoutesSeller']['GET']= 'Routes/indexSeller';
 $route['api/routes/getRoutesBySeller']['GET']= 'Routes/listBySeller';
 $route['adminCompleteRoute']['GET'] = 'Routes/adminComplete/$1';
+$route['seller/saleEgss']['GET'] = 'Seller/adminSaleEggs';
+$route['seller/saleCigar']['GET'] = 'Seller/adminSaleCigar';
+$route['api/seller/saleEggs']['POST']= 'Seller/getSaleEggs';
+$route['api/seller/saleCigar']['POST']= 'Seller/getSaleCigar';
+// get stock seller
+$route['api/seller/stockEggs']['GET']= 'Seller/getEggs';
+$route['api/seller/stockCigar']['GET']= 'Seller/getCigar';
+
+
+
+
+
+
+
