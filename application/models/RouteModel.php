@@ -59,6 +59,15 @@ class RouteModel extends CI_Model
         return $this->db->query($query)->result_array();
     }
 
+    public function getEggsByPriceClient($data){
+        $id = $data['id'];
+        $query = "SELECT h.id, h.name, h.format, h.Stock stock, ch.precioCliente precio, ch.idCliente, ch.codProducto
+            FROM huevo h
+            JOIN clientehuevo ch ON h.id = ch.codProducto
+            Where state = 1 AND ch.idCliente = $id";
+        return $this->db->query($query)->result_array();
+    }
+
     public function getCigars(){
         $query = "SELECT c.id, c.nombre, c.precio, c.stock
             FROM cigarros c

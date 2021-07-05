@@ -40,6 +40,7 @@
                                 <th>Sector</th>
                                 <th>Dirección</th>
                                 <th>Precio Total</th>
+                                <th>Productos</th>
                                 <th>Detalles</th>
                                 <th>Venta</th>
                             </tr>
@@ -69,6 +70,7 @@
                                 <th>Sector</th>
                                 <th>Dirección</th>
                                 <th>Precio Total</th>
+                                <th>Productos</th>
                                 <th>Detalles</th>
                                 <th>Venta</th>
                             </tr>
@@ -241,6 +243,34 @@
                     </div>
                 </div>
                 <div class="row mb-2">
+                    <div class="col-md-6 mb-3">
+                        <label>Deuda</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" name="deuda" id="deuda_cigar" readonly>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label>Abono</label>
+                        <div class="input-group">
+                            <input type="number" class="form-control" name="abono" id="abono_cigar">
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-md-6 mb-3">
+                        <label>Contado</label>
+                        <div class="input-group">
+                            <input type="number" class="form-control" name="contado" id="contado_cigar" placeholder="" aria-describedby="inputGroupPrepend3">
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3" id='frm_service'>
+                        <label>Credito</label>
+                        <div class="input-group">
+                            <input type="number" class="form-control" name="credito" id="credito_cigar" placeholder="" aria-describedby="inputGroupPrepend3">
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-2">
                     <div class="col-md-4 mb-3">
                         <label for="actividad">Fecha de proxima visita</label>
                         <div class="input-group" id="frm_date">
@@ -253,6 +283,75 @@
                       <button onclick="close_modal_cigars()" type="button" class="btn btn-secondary btn-danger">Cerrar</button>
                       <button id="btn_ok" type="button" class="btn btn-primary btn-success">Registrar venta</button>
                   </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal add cigars -->
+<div class="modal fade bd-example-modal-lg" id="modal_add_eggs" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog  modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="title">Agregar Huevo</h5>
+                <button type="button" class="close" onclick="close_modal_add_eggs()" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="listAddEggs" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Cigarro</th>
+                                <th>Precio</th>
+                                <th>Formato</th>
+                                <th>Stock</th>
+                                <th>Cantidad</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div> 
+                <div class="form-group float-right">
+                    <button onclick="close_modal_add_eggs()" type="button" class="btn btn-secondary btn-danger">Cerrar</button>
+                    <button id="btn_add_egg" type="button" class="btn btn-primary btn-success">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal add cigars -->
+<div class="modal fade bd-example-modal-lg" id="modal_add_cigars" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog  modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="title">Agregar Cigarros</h5>
+                <button type="button" class="close" onclick="close_modal_add_cigar()" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="listCigars" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Cigarro</th>
+                                <th>Precio</th>
+                                <th>Stock</th>
+                                <th>Cantidad</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div> 
+                <div class="form-group float-right">
+                    <button onclick="close_modal_add_cigar()" type="button" class="btn btn-secondary btn-danger">Cerrar</button>
+                    <button id="btn_add_cigar" type="button" class="btn btn-primary btn-success">Guardar</button>
+                </div>
             </div>
         </div>
     </div>

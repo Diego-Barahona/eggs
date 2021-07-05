@@ -106,8 +106,9 @@ class Routes extends CI_Controller {
 			$eggsClient = $this->RouteModel->getEggs();
 			$eggsStock = $this->RouteModel->getEggsHeaders();
 			$debts = $this->RouteModel->getDebts();
+			$cigarsHeaders = $this->RouteModel->getCigars();
 			$eggsHeaderRoute = $this->getEggsHeadersByRoute($route['detalle']);
-			$this->response->sendJSONResponse(array($eggsClient, $route, $eggsHeaderRoute, $eggsStock, $debts));
+			$this->response->sendJSONResponse(array($eggsClient, $route, $eggsHeaderRoute, $eggsStock, $debts, $cigarsHeaders, $cigarsHeaders ));
 		} else {
 			redirect('Home/login', 'refresh');
 		}
@@ -171,6 +172,18 @@ class Routes extends CI_Controller {
 		if ($this->accesscontrol->checkAuth()['correct']) {
 			$cigars= $this->RouteModel->getCigars();
 			$this->response->sendJSONResponse($cigars);
+		}else {
+			redirect('Home/login', 'refresh');
+		}
+	}
+
+	//Function to get data client to load datatable
+	public function getEggsList()
+	{   
+		if ($this->accesscontrol->checkAuth()['correct']) {
+			$data = $this->input->post('data');
+			$eggs = $this->RouteModel->getEggsByPriceClient($data);
+			$this->response->sendJSONResponse($eggs);
 		}else {
 			redirect('Home/login', 'refresh');
 		}
