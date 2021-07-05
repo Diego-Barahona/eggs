@@ -74,12 +74,7 @@ const tabla = $("#table-utilidades").DataTable({
 $("#table-utilidades").on("click", "button", function () {
 	let data = tabla.row($(this).parents("tr")).data();
 	if ($(this)[0].name == "details") {
-
-        $("#modal_chartSale").modal("show");
         show_modal_details(data);
-
-
-
     }
      
 	
@@ -87,9 +82,13 @@ $("#table-utilidades").on("click", "button", function () {
 });
 
 show_modal_details=(data)=>{
+    $("#modal_chartSale").modal("show");
     $("#modal_fecha").val(data.fecha);
-    $("#modal_codigo").val(data.codigo );
-    $("#modal_precio").val(data.utilidades );
+    $("#modal_codigo").val(data.codigo);
+    $("#modal_precio").val(data.utilidades);
+    $("#modal_cant").val(data.cantidad);
+    $("#modal_tipo").val(data.producto);
+   
     
 }
 
@@ -852,11 +851,13 @@ getSaleByProduct = () => {
                 showCharts();
 
                 if(option == "1" ){
+
+
                     console.log("entre perido dos producto");
-                tiempo=data[0][0]; //tiempo puede ser : años o meses 
-                allTimes=data[1]; // todas utlidades por meses o en años .
-                console.log(allTimes);
-                register= data[2];
+                    tiempo=data[0][0]; //tiempo puede ser : años o meses 
+                    allTimes=data[1]; // todas utlidades por meses o en años .
+                    console.log(allTimes);
+                    register= data[2];
                      
 
                     if(tiempo.utilidades){

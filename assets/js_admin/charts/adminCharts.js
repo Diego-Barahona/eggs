@@ -10,7 +10,7 @@ let data = [
    { parametro :"Ventas",tipo:2},
    { parametro :"Gastos",tipo:3},
    { parametro :"Compras",tipo:4},
-   { parametro :"Crédito",tipo:5},
+ 
  
 ];
 
@@ -65,11 +65,7 @@ $("#table-charts").on("click", "button", function () {
             window.location.assign(host_url+url);
 
         }
-        if(data.tipo == 5){
-            let url = 'charts/credit';
-            window.location.assign(host_url+url);
-
-        }
+     
      
 	
 	}

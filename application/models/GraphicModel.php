@@ -25,7 +25,7 @@ class GraphicModel extends CI_Model
               GROUP BY YEAR(v.fechaVenta)"; 
               $byYear = $this->db->query($sql0)->result();
 
-              $sql1= " SELECT  u.utilidades , v.fechaVenta fecha, v.codVenta codigo
+              $sql1= " SELECT  u.utilidades , v.fechaVenta fecha, v.codVenta codigo , u.totalCompra total_compra , u.totalVenta total_venta 
               FROM  utilidades u 
               JOIN  venta v ON v.codVenta =u.codVenta
               WHERE YEAR(v.fechaVenta) = ? "; 
@@ -56,7 +56,7 @@ class GraphicModel extends CI_Model
               $byMonth = $this->db->query($sql2,$year)->result();
 
              //registro data table
-              $sql3= " SELECT  u.utilidades , v.fechaVenta fecha, v.codVenta codigo 
+              $sql3= " SELECT  u.utilidades , v.fechaVenta fecha, v.codVenta codigo , u.totalCompra total_compra , u.totalVenta total_venta 
               FROM  utilidades u 
               JOIN  venta v ON v.codVenta = u.codVenta
               WHERE  MONTH(v.fechaVenta) = ? and YEAR(v.fechaVenta) = ? "; 
@@ -100,7 +100,7 @@ class GraphicModel extends CI_Model
                        
                         $date1 = $data['date1'];
 
-                        $sql7= " SELECT  u.utilidades , v.fechaVenta fecha, v.codVenta codigo
+                        $sql7= " SELECT  u.utilidades , v.fechaVenta fecha, v.codVenta codigo, u.totalCompra total_compra , u.totalVenta total_venta 
                                  FROM  utilidades u 
                                 JOIN  venta v ON v.codVenta = u.codVenta
                                 WHERE  v.fechaVenta = ? "; 
@@ -158,7 +158,8 @@ class GraphicModel extends CI_Model
                      GROUP BY YEAR(fechaVenta)"; 
                      $byYear = $this->db->query($sql0)->result();
        
-                     $sql1= " SELECT  fechaVenta fecha, codVenta codigo , totalVenta utilidades
+                     $sql1= " SELECT  fechaVenta fecha, codVenta codigo , totalVenta utilidades ,nomProducto producto ,
+                     precioUnitario precio , cantidadProducto cantidad
                      FROM  venta 
                      WHERE YEAR(fechaVenta) = ? "; 
                      $dates = $this->db->query($sql1,array($year))->result();
@@ -187,7 +188,8 @@ class GraphicModel extends CI_Model
                      $byMonth = $this->db->query($sql2,$year)->result();
        
                     //registro data table
-                     $sql3= " SELECT  totalVenta utilidades , fechaVenta fecha, codVenta codigo 
+                     $sql3= " SELECT  totalVenta utilidades , fechaVenta fecha, codVenta codigo,nomProducto producto ,
+                     precioUnitario precio , cantidadProducto cantidad 
                      FROM  venta
                      WHERE  MONTH(fechaVenta) = ? and YEAR(fechaVenta) = ? "; 
                      $dates = $this->db->query($sql3,array($month,$year))->result();
@@ -228,7 +230,8 @@ class GraphicModel extends CI_Model
                               
                                $date1 = $data['date1'];
        
-                               $sql7= " SELECT  totalVenta utilidades , fechaVenta fecha, codVenta codigo
+                               $sql7= " SELECT  totalVenta utilidades , fechaVenta fecha, codVenta codigo,nomProducto producto ,
+                               precioUnitario precio , cantidadProducto cantidad
                                         FROM venta
                                        WHERE  fechaVenta = ? "; 
                                         $res1 = $this->db->query($sql7,array($date1))->result();
@@ -290,7 +293,8 @@ class GraphicModel extends CI_Model
                      GROUP BY YEAR(v.fechaVenta)"; 
                      $byYear = $this->db->query($sql0)->result();
        
-                     $sql1= " SELECT  v.fechaVenta fecha, v.codVenta codigo , v.totalVenta utilidades , $name
+                     $sql1= " SELECT  v.fechaVenta fecha, v.codVenta codigo , v.totalVenta utilidades , $name , v.nomProducto producto ,
+                     v.precioUnitario precio , v.cantidadProducto cantidad
                      FROM  venta v
                      JOIN  $table_join ON v.codVenta =   $fk 
                      JOIN  $table_product  ON $id_join= $id
@@ -324,7 +328,8 @@ class GraphicModel extends CI_Model
                      $byMonth = $this->db->query($sql2,$year)->result();
        
                     //registro data table
-                     $sql3= " SELECT  v.totalVenta utilidades , v.fechaVenta fecha, v.codVenta codigo ,$name
+                     $sql3= " SELECT  v.totalVenta utilidades , v.fechaVenta fecha, v.codVenta codigo ,$name, v.nomProducto producto ,
+                     v.precioUnitario precio , v.cantidadProducto cantidad
                      FROM  venta v
                      JOIN  $table_join ON v.codVenta =$fk 
                      JOIN  $table_product  ON $id_join= $id
@@ -369,7 +374,8 @@ class GraphicModel extends CI_Model
                               
                                $date1 = $data['date1'];
 
-                               $sql7= " SELECT  v.totalVenta utilidades , v.fechaVenta fecha, v.codVenta codigo
+                               $sql7= " SELECT  v.totalVenta utilidades , v.fechaVenta fecha, v.codVenta codigo,v.nomProducto producto ,
+                               v.precioUnitario precio , v.cantidadProducto cantidad 
                                         FROM venta v
                                         JOIN  $table_join ON v.codVenta = $fk 
                                        WHERE  v.fechaVenta = ? "; 
@@ -427,9 +433,10 @@ class GraphicModel extends CI_Model
                      GROUP BY YEAR(fecha)"; 
                      $byYear = $this->db->query($sql0)->result();
        
-                     $sql1= " SELECT  fecha fecha, id codigo , costoGasto utilidades
-                     FROM  costos 
-                     WHERE YEAR(fecha) = ? "; 
+                     $sql1= " SELECT  c.fecha fecha, c.id codigo , c.costoGasto utilidades , p.nombre proveedor,p.codProducto producto
+                     FROM  costos c
+                     JOIN  proveedor p ON p.id = c.proveedorId
+                     WHERE YEAR(c.fecha) = ? "; 
                      $dates = $this->db->query($sql1,array($year))->result();
        
                      $sql = " SELECT   YEAR(fecha) as tiempo , SUM(costoGasto) as utilidades
@@ -456,9 +463,10 @@ class GraphicModel extends CI_Model
                      $byMonth = $this->db->query($sql2,$year)->result();
        
                     //registro data table
-                     $sql3= " SELECT  costoGasto utilidades , fecha fecha, id codigo 
-                     FROM  costos
-                     WHERE  MONTH(fecha) = ? and YEAR(fecha) = ? "; 
+                     $sql3= " SELECT  c.costoGasto utilidades , c.fecha fecha, c.id codigo ,p.nombre proveedor,p.codProducto producto
+                     FROM  costos c 
+                     JOIN  proveedor p ON p.id = c.proveedorId
+                     WHERE  MONTH(c.fecha) = ? and YEAR(c.fecha) = ? "; 
                      $dates = $this->db->query($sql3,array($month,$year))->result();
        
                      $sql4 = " SELECT MONTH(fecha) as tiempo, SUM(costoGasto) as utilidades
@@ -491,7 +499,9 @@ class GraphicModel extends CI_Model
                               
                                $date1 = $data['date1'];
        
-                               $sql7= " SELECT costoGasto utilidades , fecha fecha, id codigo FROM   costos WHERE  fecha = ? "; 
+                               $sql7= " SELECT  c.fecha fecha, c.id codigo , c.costoGasto utilidades , p.nombre proveedor ,p.codProducto producto FROM  costos c
+                               JOIN  proveedor p ON p.id = c.proveedorId
+                               WHERE  c.fecha = ? "; 
                                         $res1 = $this->db->query($sql7,array($date1))->result();
                                
                                $sql8= " SELECT  fecha fecha , SUM(costoGasto) utilidades FROM  costos  WHERE fecha = ?"; 
@@ -544,10 +554,11 @@ class GraphicModel extends CI_Model
                      GROUP BY YEAR(ct.fecha)"; 
                      $byYear = $this->db->query($sql0)->result();
        
-                     $sql1= " SELECT  ct.fecha fecha, ct.id codigo , ct.costoGasto utilidades , $name
+                     $sql1= " SELECT  ct.fecha fecha, ct.id codigo , ct.costoGasto utilidades , $name, p.nombre proveedor ,p.codProducto producto
                      FROM  costos ct
                      JOIN  $table_join ON  ct.id =  $fk 
                      JOIN  $table_product  ON $id_join= $id
+                     JOIN  proveedor p ON p.id= ct.proveedorId
                      WHERE YEAR(ct.fecha) = ?
                      GROUP BY ct.id "; 
                      $dates = $this->db->query($sql1,array($year))->result();
@@ -580,10 +591,11 @@ class GraphicModel extends CI_Model
 
        
                     //registro data table
-                     $sql3= " SELECT  ct.costoGasto utilidades , ct.fecha fecha, ct.id codigo ,$name
+                     $sql3= " SELECT  ct.costoGasto utilidades , ct.fecha fecha, ct.id codigo ,$name, p.nombre proveedor ,p.codProducto producto
                      FROM  costos ct
                      JOIN  $table_join ON ct.id =$fk 
                      JOIN  $table_product  ON $id_join= $id
+                     JOIN  proveedor p ON p.id= ct.proveedorId
                      WHERE  MONTH(ct.fecha) = ? and YEAR(ct.fecha) = ? 
                      GROUP BY ct.id"; 
                      
@@ -627,17 +639,19 @@ class GraphicModel extends CI_Model
                               
                                $date1 = $data['date1'];
 
-                               $sql7= " SELECT  SUM($total) utilidades , ct.fecha fecha, ct.id codigo
+                               $sql7= " SELECT  SUM($total) utilidades , ct.fecha fecha, ct.id codigo, p.nombre proveedor ,p.codProducto producto
                                         FROM costos ct
                                         JOIN  $table_join ON ct.id = $fk 
-                                        WHERE  ct.fecha = ? "; 
+                                        JOIN  proveedor p ON p.id= ct.proveedorId
+                                        WHERE  ct.fecha = ? 
+                                        GROUP BY ct.id ";
                                         $res1 = $this->db->query($sql7,array($date1))->result();
                                
                                
                                $sql8= " SELECT  ct.fecha fecha ,SUM($total) utilidades
                                         FROM  costos ct
                                         JOIN  $table_join ON ct.id = $fk 
-                                        WHERE ct.fecha = ?"; 
+                                        WHERE ct.fecha = ?";
                                         $res2 = $this->db->query($sql8,array($date1))->result();
                                $array = array( $res1 ,$res2 );
 
@@ -685,7 +699,7 @@ class GraphicModel extends CI_Model
                      GROUP BY YEAR(fechaGasto)"; 
                      $byYear = $this->db->query($sql0)->result();
        
-                     $sql1= " SELECT  costoMonetarioGeneral utilidades , fechaGasto fecha,  codigo
+                     $sql1= " SELECT  costoMonetarioGeneral utilidades , fechaGasto fecha,  codigo , nomGastoGeneral nombre
                      FROM  gastosgenerales g
                      WHERE YEAR(fechaGasto) = ? "; 
                      $dates = $this->db->query($sql1,array($year))->result();
@@ -713,7 +727,7 @@ class GraphicModel extends CI_Model
                      $byMonth = $this->db->query($sql2,$year)->result();
        
                     //registro data table
-                     $sql3= " SELECT  costoMonetarioGeneral utilidades , fechaGasto fecha, codigo 
+                     $sql3= " SELECT  costoMonetarioGeneral utilidades , fechaGasto fecha, codigo , nomGastoGeneral nombre
                      FROM  gastosgenerales g
                      WHERE  MONTH(fechaGasto) = ? and YEAR(fechaGasto) = ? "; 
                      $dates = $this->db->query($sql3,array($month,$year))->result();
@@ -753,7 +767,7 @@ class GraphicModel extends CI_Model
                               
                                $date1 = $data['date1'];
        
-                               $sql7= " SELECT  costoMonetarioGeneral utilidades , fechaGasto  fecha,  codigo
+                               $sql7= " SELECT  costoMonetarioGeneral utilidades , fechaGasto  fecha,  codigo, nomGastoGeneral nombre
                                         FROM    gastosgenerales g
                                        WHERE  fechaGasto  = ? "; 
                                         $res1 = $this->db->query($sql7,array($date1))->result();

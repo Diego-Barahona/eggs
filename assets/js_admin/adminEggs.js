@@ -276,7 +276,7 @@ registerEgg = () => {
 		id:$('#id').val(),
     };
  
-	if(currentName != data.tipoHuevo){
+//	if(currentName != data.tipoHuevo){
 
 	let url = "";
 	if (edit) url = "api/editEgg";
@@ -315,13 +315,13 @@ registerEgg = () => {
 			});
 		},
 	});
-}else{
+/*}else{
 	swal({
 		title: "Error",
 		icon: "error",
 		text: "Ingrese un nombre diferente al actual",
 	});
-}
+}*/
 };
 
 

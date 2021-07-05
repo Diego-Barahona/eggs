@@ -57,6 +57,7 @@ $(() => {
 };
 
 
+
 rellenarCampos=(compras, idProveedor)=> { 
     
     
